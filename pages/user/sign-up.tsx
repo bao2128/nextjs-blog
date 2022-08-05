@@ -68,7 +68,7 @@ export default function SignUp() {
         for (let pair of data.entries()) {
             // console.log(">>>", pair[1])
             if (!pair[1]) {
-                // console.log("false:", pair[0], 'empty')
+                // console.log("false:", _.startCase(pair[0]), 'empty')
                 setErr('⚠ Please fill in all text fields.')
                 return
             }
@@ -250,7 +250,12 @@ export default function SignUp() {
                             fullWidth
                             variant="contained"
                             size="large"
-                            sx={{ mt: 3, mb: 2, borderRadius: myTheme.shape.borderRadius}}
+                            sx={{ 
+                                mt: 3, 
+                                mb: 2, 
+                                borderRadius: myTheme.shape.borderRadius,
+                                backgroundColor: myTheme.palette.info.main,
+                            }}
                         >
                             Sign Up
                         </Button>

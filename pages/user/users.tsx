@@ -20,7 +20,6 @@ import {Box,
         Tooltip, 
         useTheme} from '@mui/material'
 import Button from '@mui/material/Button'
-import AddIcon from '@mui/icons-material/Add'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/DeleteOutlined'
 import SaveIcon from '@mui/icons-material/Save'
@@ -90,7 +89,6 @@ export default function userPage() {
     const router = useRouter()
 
     if (status === 'false') {
-        // console.log('not sign in')
         router.push('/user/sign-in')
     }
 
@@ -279,90 +277,98 @@ export default function userPage() {
     ]
 
     return (
-        <>
-            <Box sx={{
-                height: 'auto', width: '100%'
-            }}>
-                <DataGrid
-                    // onCellEditCommit={handleCommit}
-                    autoHeight
-                    rows={users}
-                    columns={cols}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    // checkboxSelection
-                    editMode="row"
-                    editRowsModel={editRowsModel}
-                    // onEditRowsModelChange={handleEditRowsModelChange}
-                    // onRowEditCommit={handleRowEditCommit}
-                    rowModesModel={rowModesModel}
-                    // rowModesModel={{ 3: { mode: GridRowModes.Edit } }}
-                    onRowEditStart={handleRowEditStart}
-                    onRowEditStop={handleRowEditStop}
-                    processRowUpdate={processRowUpdate}
+        <>{
+            (status === 'false')? (
+                <Typography align='center' color={myTheme.palette.info.main}>
+                    Loading...
+                </Typography>
+            ) : (
+                <>
+                    <Box sx={{
+                        height: 'auto', width: '100%'
+                    }}>
+                        <DataGrid
+                            // onCellEditCommit={handleCommit}
+                            autoHeight
+                            rows={users}
+                            columns={cols}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            // checkboxSelection
+                            editMode="row"
+                            editRowsModel={editRowsModel}
+                            // onEditRowsModelChange={handleEditRowsModelChange}
+                            // onRowEditCommit={handleRowEditCommit}
+                            rowModesModel={rowModesModel}
+                            // rowModesModel={{ 3: { mode: GridRowModes.Edit } }}
+                            onRowEditStart={handleRowEditStart}
+                            onRowEditStop={handleRowEditStop}
+                            processRowUpdate={processRowUpdate}
 
-                    components={{
-                        Toolbar: () => {
-                            return (<GridToolbarContainer sx={{ justifyContent: 'flex-end' }}>
-                                <Button 
-                                    startIcon={<PersonAddOutlinedIcon />} 
-                                    onClick={handleAddRow} 
-                                    sx={{textTransform: 'uppercase'}}
-                                >
-                                    New User
-                                </Button>
-                            </GridToolbarContainer>)
-                        }
-                    }}
-                    componentsProps={{
-                        toolbar: { setUsers, setRowModesModel },
-                    }}
+                            components={{
+                                Toolbar: () => {
+                                    return (<GridToolbarContainer sx={{ justifyContent: 'flex-end' }}>
+                                        <Button 
+                                            startIcon={<PersonAddOutlinedIcon />} 
+                                            onClick={handleAddRow} 
+                                            sx={{textTransform: 'uppercase'}}
+                                        >
+                                            New User
+                                        </Button>
+                                    </GridToolbarContainer>)
+                                }
+                            }}
+                            componentsProps={{
+                                toolbar: { setUsers, setRowModesModel },
+                            }}
 
-                    experimentalFeatures={{ newEditingApi: true }}
-                    disableSelectionOnClick
-                    sx={{
-                        '.MuiDataGrid-columnHeaderTitle': {
-                            // fontWeight: 'bold',
-                            // backgroundColor: '#1976d2',
-                            color: 'white',
-                        },
-                        '.MuiDataGrid-columnSeparator': {
-                            display: 'none',
-                        },
-                        '.MuiDataGrid-columnHeaders': {
-                            backgroundColor: myTheme.palette.info.main,
-                            borderRadius: myTheme.shape.borderRadius,
-                        },
-                        borderRadius: myTheme.shape.borderRadius,
-                        color: 'info.main',
-                    }}
-                />
-            </Box>
-            <Dialog
-                open={openDialog}
-            // onClose={handleCloseDialog}
-            >
-                <DialogTitle>Delete</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>This operation cannot be undone. Are you sure?</DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={handleConfirmDelete}
+                            experimentalFeatures={{ newEditingApi: true }}
+                            disableSelectionOnClick
+                            sx={{
+                                '.MuiDataGrid-columnHeaderTitle': {
+                                    // fontWeight: 'bold',
+                                    // backgroundColor: '#1976d2',
+                                    color: 'white',
+                                },
+                                '.MuiDataGrid-columnSeparator': {
+                                    display: 'none',
+                                },
+                                '.MuiDataGrid-columnHeaders': {
+                                    backgroundColor: myTheme.palette.info.main,
+                                    borderRadius: myTheme.shape.borderRadius,
+                                },
+                                borderRadius: myTheme.shape.borderRadius,
+                                color: 'info.main',
+                            }}
+                        />
+                    </Box>
+                    <Dialog
+                        open={openDialog}
+                    // onClose={handleCloseDialog}
                     >
-                        Yes
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        color="error"
-                        onClick={handleCloseDialog}
-                    >
-                        No
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </>
+                        <DialogTitle>Delete</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText>This operation cannot be undone. Are you sure?</DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={handleConfirmDelete}
+                            >
+                                Yes
+                            </Button>
+                            <Button
+                                variant="outlined"
+                                color="error"
+                                onClick={handleCloseDialog}
+                            >
+                                No
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+                </>
+            )
+        }</>
     )
 }

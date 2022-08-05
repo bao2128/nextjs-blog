@@ -20,8 +20,6 @@ import _ from 'lodash'
 //   [key: string]: any
 // }
 
-const theme = createTheme()
-
 export default function SignIn() {
   // useEffect(() => {
   //   document.title = 'Sign In'
@@ -84,7 +82,7 @@ export default function SignIn() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Container component="main" maxWidth="xs">
         <Box
           sx={{
@@ -158,7 +156,12 @@ export default function SignIn() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, borderRadius: myTheme.shape.borderRadius }}
+              sx={{ 
+                mt: 3, 
+                mb: 2, 
+                borderRadius: myTheme.shape.borderRadius,
+                backgroundColor: myTheme.palette.info.main,
+            }}
             >
               Sign In
             </Button>
@@ -173,6 +176,6 @@ export default function SignIn() {
         </Box>
         {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
-    </ThemeProvider>
+    </>
   )
 }

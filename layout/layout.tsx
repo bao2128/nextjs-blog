@@ -17,14 +17,16 @@ import _ from 'lodash'
 import { Stack, useTheme } from '@mui/material'
 import Divider from '@mui/material/Divider'
 
-const style = {
-  background: '#1976d2'
-}
+// const style = {
+//   background: '#1976d2'
+// }
+
+
 
 export default function layout({ children }) {
   const router = useRouter()
   const [users, setUsers, status, setStatus] = useAppContext()
-
+  const myTheme = useTheme()
   const signIn = users.find(e => { return e.isSignIn === true })
   const uId = users.findIndex(e => e.isSignIn === true)
 
@@ -34,8 +36,6 @@ export default function layout({ children }) {
     }
     setUsers(users.filter((row) => row?.isNew !== true))
   }, [router.pathname])
-
-  const myTheme  = useTheme()
 
   const tmp = router.pathname
   const path = tmp.split('/')
@@ -56,7 +56,6 @@ export default function layout({ children }) {
     console.log('out')
     // router.push('/user/sign-in')
   }
-
   return (
     <>
       <Head>
@@ -65,7 +64,7 @@ export default function layout({ children }) {
         </title>
       </Head>
       <Box sx={{ flexGrow: 1, mb: "30px" }}>
-        <AppBar position="static" sx={style}>
+        <AppBar position="static" sx={{background: myTheme.palette.info.main}}>
           <Toolbar>
             <IconButton
               size="large"
