@@ -1,0 +1,30 @@
+{
+    "sourceFile": "tsconfig.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1657695565033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657696096285,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,29 @@\n+{\n+  \"compilerOptions\": {\n+    \"target\": \"es5\",\n+    \"lib\": [\n+      \"dom\",\n+      \"dom.iterable\",\n+      \"esnext\"\n+    ],\n+    \"allowJs\": true,\n+    \"skipLibCheck\": true,\n+    \"strict\": false,\n+    \"forceConsistentCasingInFileNames\": true,\n+    \"noEmit\": true,\n+    \"incremental\": true,\n+    \"esModuleInterop\": true,\n+    \"module\": \"esnext\",\n+    \"resolveJsonModule\": true,\n+    \"isolatedModules\": true,\n+    \"jsx\": \"preserve\"\n+  },\n+  \"include\": [\n+    \"next-env.d.ts\",\n+    \"**/*.ts\",\n+    \"**/*.tsx\"\n+  ],\n+  \"exclude\": [\n+    \"node_modules\"\n+  ]\n+}\n"
+                },
+                {
+                    "date": 1657696547803,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,10 @@\n     \"esModuleInterop\": true,\n     \"module\": \"esnext\",\n     \"resolveJsonModule\": true,\n     \"isolatedModules\": true,\n-    \"jsx\": \"preserve\"\n+    \"jsx\": \"preserve\",\n+    \"moduleResolution\":\"Node\",\n   },\n   \"include\": [\n     \"next-env.d.ts\",\n     \"**/*.ts\",\n"
+                },
+                {
+                    "date": 1658285440534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,8 +17,9 @@\n     \"resolveJsonModule\": true,\n     \"isolatedModules\": true,\n     \"jsx\": \"preserve\",\n     \"moduleResolution\":\"Node\",\n+    \"downlevelIteration\": true,\n   },\n   \"include\": [\n     \"next-env.d.ts\",\n     \"**/*.ts\",\n"
+                }
+            ],
+            "date": 1657695565033,
+            "name": "Commit-0",
+            "content": ""
+        }
+    ]
+}

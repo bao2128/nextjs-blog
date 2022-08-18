@@ -1,0 +1,534 @@
+{
+    "sourceFile": "context/AppContext.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 129,
+            "patches": [
+                {
+                    "date": 1658218497230,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1658219017447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     React.useEffect(() => {\r\n         async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n-              console.log(\"data\", result);\r\n+              console.log(\"data Effect\", result);\r\n             setUsers(result)\r\n         }\r\n         fetchData()\r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658223932471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,11 @@\n     let sharedState:userList[] = users\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>\r\n-            {children}\r\n+            <AppContext.Consumer>\r\n+                {children}\r\n+            </AppContext.Consumer>\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658225009645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,12 +19,10 @@\n \r\n     let sharedState:userList[] = users\r\n \r\n     return (\r\n-        <AppContext.Provider value={sharedState}>\r\n-            <AppContext.Consumer>\r\n-                {children}\r\n-            </AppContext.Consumer>\r\n+        <AppContext.Provider value={sharedState}>           \r\n+            {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658226234779,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,14 +10,14 @@\n     React.useEffect(() => {\r\n         async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n-              console.log(\"data Effect\", result);\r\n             setUsers(result)\r\n         }\r\n         fetchData()\r\n     }, [])\r\n-\r\n+    \r\n+    console.log(\"data Effect\", result);\r\n     let sharedState:userList[] = users\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n"
+                },
+                {
+                    "date": 1658226252200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,10 +15,10 @@\n         }\r\n         fetchData()\r\n     }, [])\r\n     \r\n-    console.log(\"data Effect\", result);\r\n     let sharedState:userList[] = users\r\n+    console.log(\"data Effect\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658226272117,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    console.log(\"data Effect\", sharedState);\r\n+    // console.log(\"data Effect\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658226294235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    // console.log(\"data Effect\", sharedState);\r\n+    console.log(\"data Effect\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658226396871,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n-import * as React from 'react';\r\n-import { userList } from '../components/interface'\r\n+// import * as React from 'react';\r\n+import { userList, useEffect, useContext } from '../components/interface'\r\n import { useState } from 'react';\r\n \r\n const AppContext = React.createContext([]);\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n-    React.useEffect(() => {\r\n+    useEffect(() => {\r\n         async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n             setUsers(result)\r\n@@ -26,6 +26,6 @@\n     );\r\n }\r\n \r\n export function useAppContext() {\r\n-    return React.useContext(AppContext);\r\n+    return useContext(AppContext);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658226421663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n // import * as React from 'react';\r\n-import { userList, useEffect, useContext } from '../components/interface'\r\n-import { useState } from 'react';\r\n+import { userList } from '../components/interface'\r\n+import { useState, useContext, useEffect } from 'react';\r\n \r\n-const AppContext = React.createContext([]);\r\n+const AppContext = createContext([]);\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n"
+                },
+                {
+                    "date": 1658226449937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,14 @@\n-// import * as React from 'react';\r\n+import * as React from 'react';\r\n import { userList } from '../components/interface'\r\n-import { useState, useContext, useEffect } from 'react';\r\n+import { useState } from 'react';\r\n \r\n-const AppContext = createContext([]);\r\n+const AppContext = React.createContext([]);\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n-    useEffect(() => {\r\n+    React.useEffect(() => {\r\n         async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n             setUsers(result)\r\n@@ -26,6 +26,6 @@\n     );\r\n }\r\n \r\n export function useAppContext() {\r\n-    return useContext(AppContext);\r\n+    return React.useContext(AppContext);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658226485185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    console.log(\"data Effect\", users);\r\n+    console.log(\"data Effect\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658226693513,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    console.log(\"data Effect\", sharedState);\r\n+    console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658226745115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,14 +7,14 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n-        async function fetchData() {\r\n+        (async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n             setUsers(result)\r\n-        }\r\n-        fetchData()\r\n+        })();\r\n+        // fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n     console.log(\"sharedState\", sharedState);\r\n"
+                },
+                {
+                    "date": 1658227114248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,11 @@\n     console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={sharedState}>           \r\n-            {children}\r\n+            <AppContext.Consumer>\r\n+                {children}\r\n+            </AppContext.Consumer>\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658227598499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     let sharedState:userList[] = users\r\n     console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n-        <AppContext.Provider value={sharedState}>           \r\n+        <AppContext.Provider value={[users, setUsers]}>           \r\n             <AppContext.Consumer>\r\n                 {children}\r\n             </AppContext.Consumer>\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658280496478,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,11 +20,9 @@\n     console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>           \r\n-            <AppContext.Consumer>\r\n-                {children}\r\n-            </AppContext.Consumer>\r\n+            {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658280729106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", sharedState);\r\n+    // console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658280751933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    // console.log(\"sharedState\", sharedState);\r\n+    console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>           \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658280843850,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from 'react';\r\n import { userList } from '../components/interface'\r\n import { useState } from 'react';\r\n \r\n-const AppContext = React.createContext([]);\r\n+const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n"
+                },
+                {
+                    "date": 1658281124498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import * as React from 'react';\r\n import { userList } from '../components/interface'\r\n import { useState } from 'react';\r\n+import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n@@ -10,9 +11,9 @@\n     React.useEffect(() => {\r\n         (async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n-            setUsers(result)\r\n+            setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658281690189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     let sharedState:userList[] = users\r\n     console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>           \r\n+        <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658281711110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", sharedState);\r\n+    // console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658282291623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         })();\r\n         // fetchData()\r\n     }, [])\r\n     \r\n-    let sharedState:userList[] = users\r\n+    // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n"
+                },
+                {
+                    "date": 1658301941372,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n-    }, [])\r\n+    }, users)\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n"
+                },
+                {
+                    "date": 1658302220818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,10 +20,12 @@\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>       \r\n-            {children}\r\n+        <AppContext.Provider value={[users, setUsers]}>    \r\n+            <AppContext.Consumer>  \r\n+                {children}\r\n+            <AppContext.Consumer/>\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658302255749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,18 +14,16 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n-    }, users)\r\n+    }, users.length)\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>    \r\n-            <AppContext.Consumer>  \r\n-                {children}\r\n-            <AppContext.Consumer/>\r\n+        <AppContext.Provider value={[users, setUsers]}>       \r\n+            {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1658302267106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n-    }, users.length)\r\n+    }, users)\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n"
+                },
+                {
+                    "date": 1658302274029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n-    }, users)\r\n+    }, )\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n"
+                },
+                {
+                    "date": 1658303362651,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n-    }, )\r\n+    }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.log(\"sharedState\", sharedState);\r\n \r\n"
+                },
+                {
+                    "date": 1658308720298,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n         (async function fetchData() {\r\n-            const res = await fetch('/api/User')\r\n+            const res = await fetch('/api/Userfhgchgs')\r\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n"
+                },
+                {
+                    "date": 1658308730291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n         (async function fetchData() {\r\n-            const res = await fetch('/api/Userfhgchgs')\r\n+            const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         })();\r\n         // fetchData()\r\n"
+                },
+                {
+                    "date": 1658309921551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    // console.log(\"sharedState\", sharedState);\r\n+    console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658309992780,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", users);\r\n+    // console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658311279532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         // fetchData()\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    // console.log(\"sharedState\", users);\r\n+    console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658312472686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,14 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n-        (async function fetchData() {\r\n+        async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n-        })();\r\n-        // fetchData()\r\n+        }\r\n+        fetchData()\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658312783164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n-        async function fetchData() {\r\n-            const res = await fetch('/api/User')\r\n-            const result: userList[] = await res.json()\r\n+        function fetchData() {\r\n+            const res = fetch('/api/User')\r\n+            const result: userList[] = res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         }\r\n         fetchData()\r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658312800826,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n     React.useEffect(() => {\r\n-        function fetchData() {\r\n-            const res = fetch('/api/User')\r\n-            const result: userList[] = res.json()\r\n+        async function fetchData() {\r\n+            const res = await fetch('/api/User')\r\n+            const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         }\r\n         fetchData()\r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658367737110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         }\r\n         fetchData()\r\n-    }, [])\r\n+    }, [users])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n \r\n"
+                },
+                {
+                    "date": 1658367788774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n         fetchData()\r\n     }, [users])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", users);\r\n+    // console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658367807701,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,12 @@\n             const result: userList[] = await res.json()\r\n             setUsers(_.cloneDeep(result))\r\n         }\r\n         fetchData()\r\n-    }, [users])\r\n+    }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    // console.log(\"sharedState\", users);\r\n+    console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658368388694,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,15 +7,25 @@\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n-    React.useEffect(() => {\r\n-        async function fetchData() {\r\n-            const res = await fetch('/api/User')\r\n-            const result: userList[] = await res.json()\r\n-            setUsers(_.cloneDeep(result))\r\n-        }\r\n-        fetchData()\r\n+    async function fetchData() {\r\n+        // const res = await fetch('/api/User')\r\n+        // const result: userList[] = await res.json()\r\n+        // return result\r\n+        fetch('api/User').then(results => results.json()).then(data => {\r\n+            setUsers(data)\r\n+        })\r\n+    }\r\n+\r\n+    // const data = fetchData()\r\n+    // setUsers(data)\r\n+    React.useEffect(() => {    \r\n+        fetch('api/User')\r\n+        .then(results => results.json())\r\n+        .then(data => {\r\n+            setUsers(data)\r\n+        })\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658368504313,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,10 @@\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n         })\r\n+        console.log('users', users);\r\n+        \r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658368634828,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n             setUsers(data)\r\n         })\r\n         console.log('users', users);\r\n         \r\n-    }, [])\r\n+    }, [users])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n \r\n"
+                },
+                {
+                    "date": 1658368650390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n             setUsers(data)\r\n         })\r\n         console.log('users', users);\r\n         \r\n-    }, [users])\r\n+    }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n \r\n"
+                },
+                {
+                    "date": 1658369045572,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,10 +24,9 @@\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n         })\r\n-        console.log('users', users);\r\n-        \r\n+        console.log('users', users)\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658369073246,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n \r\n     // const data = fetchData()\r\n     // setUsers(data)\r\n     React.useEffect(() => {    \r\n-        fetch('api/User')\r\n+        fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n         })\r\n"
+                },
+                {
+                    "date": 1658369540571,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,22 @@\n import * as React from 'react';\r\n import { userList } from '../components/interface'\r\n-import { useState } from 'react';\r\n+import useState from 'react-usestateref'\r\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState([])\r\n+    const [users, setUsers, usersRef] = useState([])\r\n \r\n-    async function fetchData() {\r\n-        // const res = await fetch('/api/User')\r\n-        // const result: userList[] = await res.json()\r\n-        // return result\r\n-        fetch('api/User').then(results => results.json()).then(data => {\r\n-            setUsers(data)\r\n-        })\r\n-    }\r\n+    // async function fetchData() {\r\n+    //     // const res = await fetch('/api/User')\r\n+    //     // const result: userList[] = await res.json()\r\n+    //     // return result\r\n+    //     fetch('api/User').then(results => results.json()).then(data => {\r\n+    //         setUsers(data)\r\n+    //     })\r\n+    // }\r\n \r\n     // const data = fetchData()\r\n     // setUsers(data)\r\n     React.useEffect(() => {    \r\n@@ -24,9 +24,9 @@\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n         })\r\n-        console.log('users', users)\r\n+        console.log('users', usersRef.current)\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658369733358,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n         console.log('users', usersRef.current)\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", users);\r\n+    console.log(\"sharedState\", usersRef.current);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658369811417,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,14 +23,15 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n+            console.log('users', usersRef.current)\r\n         })\r\n-        console.log('users', usersRef.current)\r\n+        \r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", usersRef.current);\r\n+    console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658369826804,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n-            console.log('users', usersRef.current)\r\n+            console.log('>>>users', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658369965277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n             setUsers(data)\r\n             console.log('>>>users', usersRef.current)\r\n         })\r\n         \r\n-    }, [])\r\n+    }, [users])\r\n     \r\n     // let sharedState:userList[] = users\r\n     console.log(\"sharedState\", users);\r\n \r\n"
+                },
+                {
+                    "date": 1658369972960,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,15 +23,15 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n-            console.log('>>>users', usersRef.current)\r\n+            // console.log('>>>users', usersRef.current)\r\n         })\r\n         \r\n     }, [users])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.log(\"sharedState\", users);\r\n+    // console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658369986442,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,15 +23,15 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(data)\r\n-            // console.log('>>>users', usersRef.current)\r\n+            console.log('>>>users', usersRef.current)\r\n         })\r\n         \r\n-    }, [users])\r\n+    }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    // console.log(\"sharedState\", users);\r\n+    console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658373120979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     React.useEffect(() => {    \r\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n-            setUsers(data)\r\n+            setUsers(_.cloneDeep(data))\r\n             console.log('>>>users', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658373138628,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(_.cloneDeep(data))\r\n-            console.log('>>>users', usersRef.current)\r\n+            console.log('>>>usersRef.current', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658377141118,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n         \r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n+    console.clear()\r\n     console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n"
+                },
+                {
+                    "date": 1658377239363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(_.cloneDeep(data))\r\n-            console.log('>>>usersRef.current', usersRef.current)\r\n+            // console.log('>>>usersRef.current', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658392111714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers, usersRef] = useState([])\r\n+    const [users, setUsers] = useState([])\r\n \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n"
+                },
+                {
+                    "date": 1658392845724,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,9 +29,9 @@\n         \r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n-    console.clear()\r\n+    // console.clear()\r\n     console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n"
+                },
+                {
+                    "date": 1658399656234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,8 +23,9 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(_.cloneDeep(data))\r\n+            window.sessionStorage.setItem(\"count\", data)\r\n             // console.log('>>>usersRef.current', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658399728268,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n         fetch('../api/User')\r\n         .then(results => results.json())\r\n         .then(data => {\r\n             setUsers(_.cloneDeep(data))\r\n-            window.sessionStorage.setItem(\"count\", data)\r\n+            // window.sessionStorage.setItem(\"count\", data)\r\n             // console.log('>>>usersRef.current', usersRef.current)\r\n         })\r\n         \r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658713584150,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,74 @@\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n+export const users = [\r\n+\t{\r\n+\t\t\"id\": 0,\r\n+\t\t\"firstName\": \"Fanny\",\r\n+\t\t\"lastName\": \"Saunderson\",\r\n+\t\t\"email\": \"Fanny.Saunderson@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 1,\r\n+\t\t\"firstName\": \"Bobbi\",\r\n+\t\t\"lastName\": \"Colp\",\r\n+\t\t\"email\": \"Bobbi.Colp@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 2,\r\n+\t\t\"firstName\": \"Nataline\",\r\n+\t\t\"lastName\": \"Ajay\",\r\n+\t\t\"email\": \"Nataline.Ajay@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 3,\r\n+\t\t\"firstName\": \"Myrtice\",\r\n+\t\t\"lastName\": \"Parsaye\",\r\n+\t\t\"email\": \"Myrtice.Parsaye@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 4,\r\n+\t\t\"firstName\": \"Siana\",\r\n+\t\t\"lastName\": \"McCutcheon\",\r\n+\t\t\"email\": \"Siana.McCutcheon@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 5,\r\n+\t\t\"firstName\": \"Chickie\",\r\n+\t\t\"lastName\": \"Solitta\",\r\n+\t\t\"email\": \"Chickie.Solitta@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 6,\r\n+\t\t\"firstName\": \"Peri\",\r\n+\t\t\"lastName\": \"Maxi\",\r\n+\t\t\"email\": \"Peri.Maxi@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 7,\r\n+\t\t\"firstName\": \"Zsa Zsa\",\r\n+\t\t\"lastName\": \"Ax\",\r\n+\t\t\"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+\t{\r\n+\t\t\"id\": 8,\r\n+\t\t\"firstName\": \"Damaris\",\r\n+\t\t\"lastName\": \"Wareing\",\r\n+\t\t\"email\": \"Damaris.Wareing@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n+]\r\n+\r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n \r\n     // async function fetchData() {\r\n"
+                },
+                {
+                    "date": 1658714060649,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n-export const users = [\r\n+export const usersInit = [\r\n \t{\r\n \t\t\"id\": 0,\r\n \t\t\"firstName\": \"Fanny\",\r\n \t\t\"lastName\": \"Saunderson\",\r\n@@ -72,9 +72,9 @@\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n-\r\n+    setUsers(usersInit)\r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n     //     // return result\r\n@@ -84,18 +84,19 @@\n     // }\r\n \r\n     // const data = fetchData()\r\n     // setUsers(data)\r\n-    React.useEffect(() => {    \r\n-        fetch('../api/User')\r\n-        .then(results => results.json())\r\n-        .then(data => {\r\n-            setUsers(_.cloneDeep(data))\r\n-            // window.sessionStorage.setItem(\"count\", data)\r\n-            // console.log('>>>usersRef.current', usersRef.current)\r\n-        })\r\n+\r\n+    // React.useEffect(() => {    \r\n+    //     fetch('../api/User')\r\n+    //     .then(results => results.json())\r\n+    //     .then(data => {\r\n+    //         setUsers(_.cloneDeep(data))\r\n+    //         // window.sessionStorage.setItem(\"count\", data)\r\n+    //         // console.log('>>>usersRef.current', usersRef.current)\r\n+    //     })\r\n         \r\n-    }, [])\r\n+    // }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658714286203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n-    setUsers(usersInit)\r\n+    \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n     //     // return result\r\n@@ -85,18 +85,11 @@\n \r\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n-    // React.useEffect(() => {    \r\n-    //     fetch('../api/User')\r\n-    //     .then(results => results.json())\r\n-    //     .then(data => {\r\n-    //         setUsers(_.cloneDeep(data))\r\n-    //         // window.sessionStorage.setItem(\"count\", data)\r\n-    //         // console.log('>>>usersRef.current', usersRef.current)\r\n-    //     })\r\n-        \r\n-    // }, [])\r\n+    React.useEffect(() => {    \r\n+        setUsers(usersInit)\r\n+    }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658714305082,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,22 +54,8 @@\n \t\t\"lastName\": \"Maxi\",\r\n \t\t\"email\": \"Peri.Maxi@gmail.com\",\r\n \t\t\"password\": \"Abc@1234\"\r\n \t},\r\n-\t{\r\n-\t\t\"id\": 7,\r\n-\t\t\"firstName\": \"Zsa Zsa\",\r\n-\t\t\"lastName\": \"Ax\",\r\n-\t\t\"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 8,\r\n-\t\t\"firstName\": \"Damaris\",\r\n-\t\t\"lastName\": \"Wareing\",\r\n-\t\t\"email\": \"Damaris.Wareing@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n"
+                },
+                {
+                    "date": 1658714321432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,8 +54,15 @@\n \t\t\"lastName\": \"Maxi\",\r\n \t\t\"email\": \"Peri.Maxi@gmail.com\",\r\n \t\t\"password\": \"Abc@1234\"\r\n \t},\r\n+\t{\r\n+\t\t\"id\": 7,\r\n+\t\t\"firstName\": \"Zsa Zsa\",\r\n+\t\t\"lastName\": \"Ax\",\r\n+\t\t\"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n+\t\t\"password\": \"Abc@1234\"\r\n+\t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState([])\r\n"
+                },
+                {
+                    "date": 1658715242386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n     React.useEffect(() => {    \r\n-        setUsers(usersInit)\r\n+        setUsers([usersInit])\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n"
+                },
+                {
+                    "date": 1658715257796,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n     React.useEffect(() => {    \r\n-        setUsers([usersInit])\r\n+        setUsers([...usersInit])\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n"
+                },
+                {
+                    "date": 1658715623699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n     React.useEffect(() => {    \r\n-        setUsers([...usersInit])\r\n+        setUsers(...[usersInit])\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n"
+                },
+                {
+                    "date": 1658715728952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n     React.useEffect(() => {    \r\n-        setUsers(...[usersInit])\r\n+        setUsers(usersInit)\r\n     }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n"
+                },
+                {
+                    "date": 1658715820686,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState([])\r\n+    const [users, setUsers] = useState(usersInit)\r\n     \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n@@ -78,11 +78,11 @@\n \r\n     // const data = fetchData()\r\n     // setUsers(data)\r\n \r\n-    React.useEffect(() => {    \r\n-        setUsers(usersInit)\r\n-    }, [])\r\n+    // React.useEffect(() => {    \r\n+    //     setUsers(...usersInit)\r\n+    // }, [])\r\n     \r\n     // let sharedState:userList[] = users\r\n     // console.clear()\r\n     console.log(\"sharedState\", users);\r\n"
+                },
+                {
+                    "date": 1658715856393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState(usersInit)\r\n+    const [users, setUsers] = useState([...usersInit])\r\n     \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n"
+                },
+                {
+                    "date": 1658715916951,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n \t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState([...usersInit])\r\n+    const [users, setUsers] = useState([usersInit])\r\n     \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n"
+                },
+                {
+                    "date": 1658716353716,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,68 @@\n \t},\r\n ]\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState([usersInit])\r\n+    const [users, setUsers] = useState(\r\n+        [\r\n+            {\r\n+                \"id\": 0,\r\n+                \"firstName\": \"Fanny\",\r\n+                \"lastName\": \"Saunderson\",\r\n+                \"email\": \"Fanny.Saunderson@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 1,\r\n+                \"firstName\": \"Bobbi\",\r\n+                \"lastName\": \"Colp\",\r\n+                \"email\": \"Bobbi.Colp@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 2,\r\n+                \"firstName\": \"Nataline\",\r\n+                \"lastName\": \"Ajay\",\r\n+                \"email\": \"Nataline.Ajay@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 3,\r\n+                \"firstName\": \"Myrtice\",\r\n+                \"lastName\": \"Parsaye\",\r\n+                \"email\": \"Myrtice.Parsaye@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 4,\r\n+                \"firstName\": \"Siana\",\r\n+                \"lastName\": \"McCutcheon\",\r\n+                \"email\": \"Siana.McCutcheon@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 5,\r\n+                \"firstName\": \"Chickie\",\r\n+                \"lastName\": \"Solitta\",\r\n+                \"email\": \"Chickie.Solitta@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 6,\r\n+                \"firstName\": \"Peri\",\r\n+                \"lastName\": \"Maxi\",\r\n+                \"email\": \"Peri.Maxi@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+            {\r\n+                \"id\": 7,\r\n+                \"firstName\": \"Zsa Zsa\",\r\n+                \"lastName\": \"Ax\",\r\n+                \"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n+                \"password\": \"Abc@1234\"\r\n+            },\r\n+        ]\r\n+    )\r\n     \r\n     // async function fetchData() {\r\n     //     // const res = await fetch('/api/User')\r\n     //     // const result: userList[] = await res.json()\r\n"
+                },
+                {
+                    "date": 1658716492316,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,11 +56,11 @@\n \t\t\"password\": \"Abc@1234\"\r\n \t},\r\n \t{\r\n \t\t\"id\": 7,\r\n-\t\t\"firstName\": \"Zsa Zsa\",\r\n+\t\t\"firstName\": \"ZsaZsa\",\r\n \t\t\"lastName\": \"Ax\",\r\n-\t\t\"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n+\t\t\"email\": \"ZsaZsa.Ax@gmail.com\",\r\n \t\t\"password\": \"Abc@1234\"\r\n \t},\r\n ]\r\n \r\n"
+                },
+                {
+                    "date": 1658716515932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,67 +4,8 @@\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n-export const usersInit = [\r\n-\t{\r\n-\t\t\"id\": 0,\r\n-\t\t\"firstName\": \"Fanny\",\r\n-\t\t\"lastName\": \"Saunderson\",\r\n-\t\t\"email\": \"Fanny.Saunderson@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 1,\r\n-\t\t\"firstName\": \"Bobbi\",\r\n-\t\t\"lastName\": \"Colp\",\r\n-\t\t\"email\": \"Bobbi.Colp@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 2,\r\n-\t\t\"firstName\": \"Nataline\",\r\n-\t\t\"lastName\": \"Ajay\",\r\n-\t\t\"email\": \"Nataline.Ajay@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 3,\r\n-\t\t\"firstName\": \"Myrtice\",\r\n-\t\t\"lastName\": \"Parsaye\",\r\n-\t\t\"email\": \"Myrtice.Parsaye@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 4,\r\n-\t\t\"firstName\": \"Siana\",\r\n-\t\t\"lastName\": \"McCutcheon\",\r\n-\t\t\"email\": \"Siana.McCutcheon@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 5,\r\n-\t\t\"firstName\": \"Chickie\",\r\n-\t\t\"lastName\": \"Solitta\",\r\n-\t\t\"email\": \"Chickie.Solitta@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 6,\r\n-\t\t\"firstName\": \"Peri\",\r\n-\t\t\"lastName\": \"Maxi\",\r\n-\t\t\"email\": \"Peri.Maxi@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-\t{\r\n-\t\t\"id\": 7,\r\n-\t\t\"firstName\": \"ZsaZsa\",\r\n-\t\t\"lastName\": \"Ax\",\r\n-\t\t\"email\": \"ZsaZsa.Ax@gmail.com\",\r\n-\t\t\"password\": \"Abc@1234\"\r\n-\t},\r\n-]\r\n-\r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = useState(\r\n         [\r\n             {\r\n@@ -117,11 +58,11 @@\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n                 \"id\": 7,\r\n-                \"firstName\": \"Zsa Zsa\",\r\n+                \"firstName\": \"ZsaZsa\",\r\n                 \"lastName\": \"Ax\",\r\n-                \"email\": \"Zsa Zsa.Ax@gmail.com\",\r\n+                \"email\": \"ZsaZsa.Ax@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n         ]\r\n     )\r\n"
+                },
+                {
+                    "date": 1658717095653,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import * as React from 'react';\r\n-import { userList } from '../components/interface'\r\n-import useState from 'react-usestateref'\r\n+import { userList, useState } from '../components/interface'\r\n+\r\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n"
+                },
+                {
+                    "date": 1658717118987,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import * as React from 'react';\r\n-import { userList, useState } from '../components/interface'\r\n-\r\n+import { userList } from '../components/interface'\r\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n"
+                },
+                {
+                    "date": 1658717130218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = useState(\r\n+    const [users, setUsers] = React.useState(\r\n         [\r\n             {\r\n                 \"id\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n"
+                },
+                {
+                    "date": 1658717177391,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = React.useState(\r\n+    const {users, setUsers} = React.useState(\r\n         [\r\n             {\r\n                 \"id\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n@@ -86,9 +86,9 @@\n     // console.clear()\r\n     console.log(\"sharedState\", users);\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>       \r\n+        <AppContext.Provider value={users, setUsers}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658717194420,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const {users, setUsers} = React.useState(\r\n+    const [users, setUsers] = React.useState(\r\n         [\r\n             {\r\n                 \"id\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n@@ -86,9 +86,9 @@\n     // console.clear()\r\n     console.log(\"sharedState\", users);\r\n \r\n     return (\r\n-        <AppContext.Provider value={users, setUsers}>       \r\n+        <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658717274806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import * as React from 'react';\r\n-import { userList } from '../components/interface'\r\n+\r\n import _ from 'lodash';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n"
+                },
+                {
+                    "date": 1658717281227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,27 +64,9 @@\n                 \"password\": \"Abc@1234\"\r\n             },\r\n         ]\r\n     )\r\n-    \r\n-    // async function fetchData() {\r\n-    //     // const res = await fetch('/api/User')\r\n-    //     // const result: userList[] = await res.json()\r\n-    //     // return result\r\n-    //     fetch('api/User').then(results => results.json()).then(data => {\r\n-    //         setUsers(data)\r\n-    //     })\r\n-    // }\r\n \r\n-    // const data = fetchData()\r\n-    // setUsers(data)\r\n-\r\n-    // React.useEffect(() => {    \r\n-    //     setUsers(...usersInit)\r\n-    // }, [])\r\n-    \r\n-    // let sharedState:userList[] = users\r\n-    // console.clear()\r\n     console.log(\"sharedState\", users);\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n"
+                },
+                {
+                    "date": 1658718881415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,9 +66,9 @@\n         ]\r\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n-\r\n+    const userClone = _.cloneDeep(users)\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658731596293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -67,10 +67,11 @@\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n+    let status = false\r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>       \r\n+        <AppContext.Provider value={[users, setUsers, status]}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658732151551,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -67,11 +67,11 @@\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n-    let status = false\r\n+    const [status, setStatus] = React.useState(false)\r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers, status]}>       \r\n+        <AppContext.Provider value={[users, setUsers, status, setStatus]}>       \r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658738714010,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,10 +68,15 @@\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = React.useState(false)\r\n+\r\n+    if (sessionStorage.getItem(\"status\") === null) {\r\n+        console.log('status null')\r\n+    }\r\n+\r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers, status, setStatus]}>       \r\n+        <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658739262100,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import * as React from 'react';\r\n \r\n import _ from 'lodash';\r\n+import { useEffect } from 'react';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n@@ -69,12 +70,17 @@\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = React.useState(false)\r\n \r\n-    if (sessionStorage.getItem(\"status\") === null) {\r\n-        console.log('status null')\r\n-    }\r\n+    \r\n \r\n+    useEffect(() => {\r\n+        // Perform localStorage action\r\n+        if (sessionStorage.getItem(\"status\") === null) {\r\n+            console.log('status null')\r\n+        }\r\n+      }, [])\r\n+\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658739522327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,16 +68,20 @@\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n-    const [status, setStatus] = React.useState(false)\r\n+    const [status, setStatus] = React.useState('')\r\n \r\n     \r\n \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n-        if (sessionStorage.getItem(\"status\") === null) {\r\n+        if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n+            sessionStorage.setItem('status', 'true');\r\n+            setStatus(sessionStorage.getItem('status'))\r\n+            console.log('status: ', status)\r\n+            \r\n         }\r\n       }, [])\r\n \r\n     return (\r\n"
+                },
+                {
+                    "date": 1658739625384,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,13 +76,15 @@\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n-            sessionStorage.setItem('status', 'true');\r\n+            sessionStorage.setItem('status', 'true')\r\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n+        console.log('status exist');\r\n+        \r\n       }, [])\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n"
+                },
+                {
+                    "date": 1658739855536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,9 +76,9 @@\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n-            sessionStorage.setItem('status', 'true')\r\n+            sessionStorage.setItem('status', 'false')\r\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n"
+                },
+                {
+                    "date": 1658739981360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,9 +81,9 @@\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n-        console.log('status exist');\r\n+        console.log('status exist: ', status);\r\n         \r\n       }, [])\r\n \r\n     return (\r\n"
+                },
+                {
+                    "date": 1658740015106,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,12 +81,12 @@\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n-        console.log('status exist: ', status);\r\n         \r\n+        \r\n       }, [])\r\n-\r\n+      console.log('status exist: ', status);\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740077521,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -70,10 +70,8 @@\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = React.useState('')\r\n \r\n-    \r\n-\r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n@@ -81,12 +79,11 @@\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n-        \r\n-        \r\n       }, [])\r\n-      console.log('status exist: ', status);\r\n+      console.log('status exist: ', status)\r\n+\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740122876,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,11 +79,12 @@\n             setStatus(sessionStorage.getItem('status'))\r\n             console.log('status: ', status)\r\n             \r\n         }\r\n-      }, [])\r\n-      console.log('status exist: ', status)\r\n-\r\n+    }, [])\r\n+    \r\n+    console.log('status exist: ', status)\r\n+    \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740205972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -81,10 +81,10 @@\n             \r\n         }\r\n     }, [])\r\n     \r\n-    console.log('status exist: ', status)\r\n-    \r\n+    console.log('status exist: ', sessionStorage.getItem('status'))\r\n+\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740237619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,25 +68,23 @@\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n-    const [status, setStatus] = React.useState('')\r\n-\r\n+    \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             sessionStorage.setItem('status', 'false')\r\n-            setStatus(sessionStorage.getItem('status'))\r\n-            console.log('status: ', status)\r\n+            console.log('status: ', sessionStorage.getItem('status'))\r\n             \r\n         }\r\n     }, [])\r\n     \r\n     console.log('status exist: ', sessionStorage.getItem('status'))\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n+        <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658740288140,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,10 +79,10 @@\n             \r\n         }\r\n     }, [])\r\n     \r\n-    console.log('status exist: ', sessionStorage.getItem('status'))\r\n \r\n+\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740318242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -77,8 +77,9 @@\n             sessionStorage.setItem('status', 'false')\r\n             console.log('status: ', sessionStorage.getItem('status'))\r\n             \r\n         }\r\n+        console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n \r\n \r\n"
+                },
+                {
+                    "date": 1658740361580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,10 +74,8 @@\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             sessionStorage.setItem('status', 'false')\r\n-            console.log('status: ', sessionStorage.getItem('status'))\r\n-            \r\n         }\r\n         console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658740438956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,10 +78,10 @@\n         }\r\n         console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n+    console.log('status: ', sessionStorage.getItem('status'))\r\n \r\n-\r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1658740472692,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,9 +78,9 @@\n         }\r\n         console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n-    console.log('status: ', sessionStorage.getItem('status'))\r\n+    // console.log('status: ', sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658740604134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,9 +78,9 @@\n         }\r\n         console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n-    // console.log('status: ', sessionStorage.getItem('status'))    //wrong: server side\r\n+    console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658740615799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -78,9 +78,9 @@\n         }\r\n         console.log('status: ', sessionStorage.getItem('status'))\r\n     }, [])\r\n     \r\n-    console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n+    // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n             {children}\r\n"
+                },
+                {
+                    "date": 1658740677956,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from 'react';\r\n \r\n import _ from 'lodash';\r\n-import { useEffect } from 'react';\r\n+import { useEffect, useState } from 'react';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n@@ -68,16 +68,17 @@\n     )\r\n \r\n     console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n-    \r\n+    const [status, setStatus] = useState('')\r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             sessionStorage.setItem('status', 'false')\r\n+            setStatus(sessionStorage.getItem('status'))\r\n         }\r\n-        console.log('status: ', sessionStorage.getItem('status'))\r\n+        console.log('status: ', status)\r\n     }, [])\r\n     \r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n"
+                },
+                {
+                    "date": 1658740731142,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,9 +74,9 @@\n         // Perform localStorage action\r\n         if (sessionStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             sessionStorage.setItem('status', 'false')\r\n-            setStatus(sessionStorage.getItem('status'))\r\n+            setStatus('false')\r\n         }\r\n         console.log('status: ', status)\r\n     }, [])\r\n     \r\n"
+                },
+                {
+                    "date": 1658740748346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,11 +76,11 @@\n             console.log('status null')\r\n             sessionStorage.setItem('status', 'false')\r\n             setStatus('false')\r\n         }\r\n-        console.log('status: ', status)\r\n+        \r\n     }, [])\r\n-    \r\n+    console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers]}>\r\n"
+                },
+                {
+                    "date": 1658740896404,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,11 +71,11 @@\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n-        if (sessionStorage.getItem('status') === null) {\r\n+        if (localStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n-            sessionStorage.setItem('status', 'false')\r\n+            localStorage.setItem('status', 'false')\r\n             setStatus('false')\r\n         }\r\n         \r\n     }, [])\r\n"
+                },
+                {
+                    "date": 1658740986095,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,12 +74,11 @@\n         // Perform localStorage action\r\n         if (localStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             localStorage.setItem('status', 'false')\r\n-            setStatus('false')\r\n         }\r\n-        \r\n     }, [])\r\n+    setStatus(localStorage.getItem('status'))\r\n     console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n"
+                },
+                {
+                    "date": 1658741000333,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,10 +75,11 @@\n         if (localStorage.getItem('status') === null) {\r\n             console.log('status null')\r\n             localStorage.setItem('status', 'false')\r\n         }\r\n+        setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n-    setStatus(localStorage.getItem('status'))\r\n+    \r\n     console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n"
+                },
+                {
+                    "date": 1658741118963,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -82,9 +82,9 @@\n     console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers]}>\r\n+        <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n     );\r\n }\r\n"
+                },
+                {
+                    "date": 1658742795172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -66,21 +66,21 @@\n             },\r\n         ]\r\n     )\r\n \r\n-    console.log(\"sharedState\", users);\r\n+    // console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (localStorage.getItem('status') === null) {\r\n-            console.log('status null')\r\n+            // console.log('status null')\r\n             localStorage.setItem('status', 'false')\r\n         }\r\n         setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n     \r\n-    console.log('status: ', status)\r\n+    // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n"
+                },
+                {
+                    "date": 1658743693944,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -69,8 +69,9 @@\n \r\n     // console.log(\"sharedState\", users);\r\n     const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n+    \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         if (localStorage.getItem('status') === null) {\r\n             // console.log('status null')\r\n"
+                },
+                {
+                    "date": 1658823460235,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,14 @@\n import * as React from 'react';\r\n \r\n import _ from 'lodash';\r\n import { useEffect, useState } from 'react';\r\n+import { GridRowModel } from '@mui/x-data-grid';\r\n \r\n const AppContext = React.createContext([]);     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n-    const [users, setUsers] = React.useState(\r\n+    const [users, setUsers] = React.useState<GridRowModel[]>(\r\n         [\r\n             {\r\n                 \"id\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n"
+                },
+                {
+                    "date": 1659084417885,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,58 +9,58 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n         [\r\n             {\r\n-                \"id\": 0,\r\n+                \"uid\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n                 \"lastName\": \"Saunderson\",\r\n                 \"email\": \"Fanny.Saunderson@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 1,\r\n+                \"uid\": 1,\r\n                 \"firstName\": \"Bobbi\",\r\n                 \"lastName\": \"Colp\",\r\n                 \"email\": \"Bobbi.Colp@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 2,\r\n+                \"uid\": 2,\r\n                 \"firstName\": \"Nataline\",\r\n                 \"lastName\": \"Ajay\",\r\n                 \"email\": \"Nataline.Ajay@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 3,\r\n+                \"uid\": 3,\r\n                 \"firstName\": \"Myrtice\",\r\n                 \"lastName\": \"Parsaye\",\r\n                 \"email\": \"Myrtice.Parsaye@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 4,\r\n+                \"uid\": 4,\r\n                 \"firstName\": \"Siana\",\r\n                 \"lastName\": \"McCutcheon\",\r\n                 \"email\": \"Siana.McCutcheon@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 5,\r\n+                \"uid\": 5,\r\n                 \"firstName\": \"Chickie\",\r\n                 \"lastName\": \"Solitta\",\r\n                 \"email\": \"Chickie.Solitta@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 6,\r\n+                \"uid\": 6,\r\n                 \"firstName\": \"Peri\",\r\n                 \"lastName\": \"Maxi\",\r\n                 \"email\": \"Peri.Maxi@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"id\": 7,\r\n+                \"uid\": 7,\r\n                 \"firstName\": \"ZsaZsa\",\r\n                 \"lastName\": \"Ax\",\r\n                 \"email\": \"ZsaZsa.Ax@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n"
+                },
+                {
+                    "date": 1659084690276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,58 +9,58 @@\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n         [\r\n             {\r\n-                \"uid\": 0,\r\n+                \"id\": 0,\r\n                 \"firstName\": \"Fanny\",\r\n                 \"lastName\": \"Saunderson\",\r\n                 \"email\": \"Fanny.Saunderson@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 1,\r\n+                \"id\": 1,\r\n                 \"firstName\": \"Bobbi\",\r\n                 \"lastName\": \"Colp\",\r\n                 \"email\": \"Bobbi.Colp@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 2,\r\n+                \"id\": 2,\r\n                 \"firstName\": \"Nataline\",\r\n                 \"lastName\": \"Ajay\",\r\n                 \"email\": \"Nataline.Ajay@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 3,\r\n+                \"id\": 3,\r\n                 \"firstName\": \"Myrtice\",\r\n                 \"lastName\": \"Parsaye\",\r\n                 \"email\": \"Myrtice.Parsaye@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 4,\r\n+                \"id\": 4,\r\n                 \"firstName\": \"Siana\",\r\n                 \"lastName\": \"McCutcheon\",\r\n                 \"email\": \"Siana.McCutcheon@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 5,\r\n+                \"id\": 5,\r\n                 \"firstName\": \"Chickie\",\r\n                 \"lastName\": \"Solitta\",\r\n                 \"email\": \"Chickie.Solitta@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 6,\r\n+                \"id\": 6,\r\n                 \"firstName\": \"Peri\",\r\n                 \"lastName\": \"Maxi\",\r\n                 \"email\": \"Peri.Maxi@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n             },\r\n             {\r\n-                \"uid\": 7,\r\n+                \"id\": 7,\r\n                 \"firstName\": \"ZsaZsa\",\r\n                 \"lastName\": \"Ax\",\r\n                 \"email\": \"ZsaZsa.Ax@gmail.com\",\r\n                 \"password\": \"Abc@1234\"\r\n"
+                },
+                {
+                    "date": 1659433553498,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,12 +73,9 @@\n     const [status, setStatus] = useState('')\r\n     \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n-        if (localStorage.getItem('status') === null) {\r\n-            // console.log('status null')\r\n-            localStorage.setItem('status', 'false')\r\n-        }\r\n+        localStorage.setItem('status', 'false')\r\n         setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n     \r\n     // console.log('status: ', status)\r\n"
+                },
+                {
+                    "date": 1659496951896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n         ]\r\n     )\r\n \r\n     // console.log(\"sharedState\", users);\r\n-    const userClone = _.cloneDeep(users)\r\n+    // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n     \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n"
+                },
+                {
+                    "date": 1659499382869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,11 @@\n-import * as React from 'react';\r\n+import * as React from 'react'\r\n \r\n-import _ from 'lodash';\r\n-import { useEffect, useState } from 'react';\r\n-import { GridRowModel } from '@mui/x-data-grid';\r\n+import _ from 'lodash'\r\n+import { useEffect, useState } from 'react'\r\n+import { GridRowModel } from '@mui/x-data-grid'\r\n \r\n-const AppContext = React.createContext([]);     //create shared state\r\n+const AppContext = React.createContext([])     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n         [\r\n@@ -67,9 +67,9 @@\n             },\r\n         ]\r\n     )\r\n \r\n-    // console.log(\"sharedState\", users);\r\n+    // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n     \r\n     useEffect(() => {\r\n@@ -84,10 +84,10 @@\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n             {children}\r\n         </AppContext.Provider>\r\n-    );\r\n+    )\r\n }\r\n \r\n export function useAppContext() {\r\n-    return React.useContext(AppContext);\r\n+    return React.useContext(AppContext)\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1659516794786,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,8 +2,10 @@\n \r\n import _ from 'lodash'\r\n import { useEffect, useState } from 'react'\r\n import { GridRowModel } from '@mui/x-data-grid'\r\n+import { ThemeProvider, useTheme } from '@mui/material/styles'\r\n+import appTheme from '../components/theme'\r\n \r\n const AppContext = React.createContext([])     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n@@ -70,21 +72,23 @@\n \r\n     // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n-    \r\n+\r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         localStorage.setItem('status', 'false')\r\n         setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n-    \r\n+\r\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n-            {children}\r\n+            <ThemeProvider theme={appTheme}>\r\n+                {children}\r\n+            </ThemeProvider>\r\n         </AppContext.Provider>\r\n     )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1659517670470,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -84,11 +84,9 @@\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n-            <ThemeProvider theme={appTheme}>\r\n-                {children}\r\n-            </ThemeProvider>\r\n+            {children}\r\n         </AppContext.Provider>\r\n     )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1659518011251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n import _ from 'lodash'\r\n import { useEffect, useState } from 'react'\r\n import { GridRowModel } from '@mui/x-data-grid'\r\n import { ThemeProvider, useTheme } from '@mui/material/styles'\r\n-import appTheme from '../components/theme'\r\n \r\n+\r\n const AppContext = React.createContext([])     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n"
+                },
+                {
+                    "date": 1659518427450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n import _ from 'lodash'\r\n import { useEffect, useState } from 'react'\r\n import { GridRowModel } from '@mui/x-data-grid'\r\n import { ThemeProvider, useTheme } from '@mui/material/styles'\r\n+import appTheme from '../components/theme'\r\n \r\n-\r\n const AppContext = React.createContext([])     //create shared state\r\n \r\n export function AppWrapper({ children }) {\r\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n@@ -78,15 +78,17 @@\n         // Perform localStorage action\r\n         localStorage.setItem('status', 'false')\r\n         setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n-\r\n+    \r\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n         <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n-            {children}\r\n+            <ThemeProvider theme={appTheme}>\r\n+                {children}\r\n+            </ThemeProvider>\r\n         </AppContext.Provider>\r\n     )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1660634250665,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,12 +12,12 @@\n     const [users, setUsers] = React.useState<GridRowModel[]>(\r\n         [\r\n             {\r\n                 \"id\": 0,\r\n-                \"firstName\": \"Fanny\",\r\n-                \"lastName\": \"Saunderson\",\r\n-                \"email\": \"Fanny.Saunderson@gmail.com\",\r\n-                \"password\": \"Abc@1234\"\r\n+                \"firstName\": \"a\",\r\n+                \"lastName\": \"a\",\r\n+                \"email\": \"a@gmail.com\",\r\n+                \"password\": \"a\"\r\n             },\r\n             {\r\n                 \"id\": 1,\r\n                 \"firstName\": \"Bobbi\",\r\n"
+                },
+                {
+                    "date": 1660634508917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,9 +75,9 @@\n     const [status, setStatus] = useState('')\r\n \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n-        localStorage.setItem('status', 'false')\r\n+        // localStorage.setItem('status', 'false')\r\n         setStatus(localStorage.getItem('status'))\r\n     }, [])\r\n     \r\n     // console.log('status: ', status)\r\n"
+                },
+                {
+                    "date": 1660634734444,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,13 +73,13 @@\n     // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n \r\n-    useEffect(() => {\r\n-        // Perform localStorage action\r\n-        // localStorage.setItem('status', 'false')\r\n-        setStatus(localStorage.getItem('status'))\r\n-    }, [])\r\n+    // useEffect(() => {\r\n+    //     // Perform localStorage action\r\n+    //     // localStorage.setItem('status', 'false')\r\n+    //     setStatus(localStorage.getItem('status'))\r\n+    // }, [])\r\n     \r\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n"
+                },
+                {
+                    "date": 1660634806794,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,13 +73,13 @@\n     // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n \r\n-    // useEffect(() => {\r\n-    //     // Perform localStorage action\r\n-    //     // localStorage.setItem('status', 'false')\r\n-    //     setStatus(localStorage.getItem('status'))\r\n-    // }, [])\r\n+    useEffect(() => {\r\n+        // Perform localStorage action\r\n+        localStorage.setItem('status', 'false')\r\n+        setStatus(localStorage.getItem('status'))\r\n+    }, [])\r\n     \r\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n"
+                },
+                {
+                    "date": 1660639193089,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,8 +72,9 @@\n \r\n     // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n+    const [isDisabled, setIsDisabled] = useState(false)\r\n \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         localStorage.setItem('status', 'false')\r\n@@ -83,9 +84,9 @@\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers, status, setStatus]}>\r\n+        <AppContext.Provider value={[users, setUsers, status, setStatus, isDisabled, setIsDisabled]}>\r\n             <ThemeProvider theme={appTheme}>\r\n                 {children}\r\n             </ThemeProvider>\r\n         </AppContext.Provider>\r\n"
+                },
+                {
+                    "date": 1660639605590,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,8 +73,9 @@\n     // console.log(\"sharedState\", users)\r\n     // const userClone = _.cloneDeep(users)\r\n     const [status, setStatus] = useState('')\r\n     const [isDisabled, setIsDisabled] = useState(false)\r\n+    const [alertMessage, setAlertMessage] = useState('')\r\n \r\n     useEffect(() => {\r\n         // Perform localStorage action\r\n         localStorage.setItem('status', 'false')\r\n@@ -84,9 +85,9 @@\n     // console.log('status: ', status)\r\n     // console.log('status: ', window.sessionStorage.getItem('status'))    //wrong: server side\r\n \r\n     return (\r\n-        <AppContext.Provider value={[users, setUsers, status, setStatus, isDisabled, setIsDisabled]}>\r\n+        <AppContext.Provider value={[users, setUsers, status, setStatus, isDisabled, setIsDisabled, alertMessage, setAlertMessage]}>\r\n             <ThemeProvider theme={appTheme}>\r\n                 {children}\r\n             </ThemeProvider>\r\n         </AppContext.Provider>\r\n"
+                }
+            ],
+            "date": 1658218497230,
+            "name": "Commit-0",
+            "content": "import * as React from 'react';\r\nimport { userList } from '../components/interface'\r\nimport { useState } from 'react';\r\n\r\nconst AppContext = React.createContext([]);\r\n\r\nexport function AppWrapper({ children }) {\r\n    const [users, setUsers] = useState([])\r\n\r\n    React.useEffect(() => {\r\n        async function fetchData() {\r\n            const res = await fetch('/api/User')\r\n            const result: userList[] = await res.json()\r\n              console.log(\"data\", result);\r\n            setUsers(result)\r\n        }\r\n        fetchData()\r\n    }, [])\r\n\r\n    let sharedState:userList[] = users\r\n\r\n    return (\r\n        <AppContext.Provider value={sharedState}>\r\n            {children}\r\n        </AppContext.Provider>\r\n    );\r\n}\r\n\r\nexport function useAppContext() {\r\n    return React.useContext(AppContext);\r\n}"
+        }
+    ]
+}

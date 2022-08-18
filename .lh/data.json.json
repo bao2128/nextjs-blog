@@ -1,0 +1,22 @@
+{
+    "sourceFile": "data.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1657857046248,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1658388078641,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,32 @@\n-{\r\n-    \"users\": [\r\n-        {\r\n-            \"id\": 1,\r\n-            \"firstName\": \"fName_1\",\r\n-            \"lastName\": \"lName_1\",\r\n-            \"age\": 45\r\n-        },\r\n-        {\r\n-            \"id\": 2,\r\n-            \"firstName\": \"fName_2\",\r\n-            \"lastName\": \"lName_2\",\r\n-            \"age\": 23\r\n-        },\r\n-        {\r\n-            \"id\": 3,\r\n-            \"firstName\": \"fName_3\",\r\n-            \"lastName\": \"lName_3\",\r\n-            \"age\": 38\r\n-        }\r\n-    ]\r\n+{\n+  \"users\": [\n+    {\n+      \"id\": 0,\n+      \"firstName\": \"Fanny\",\n+      \"lastName\": \"Saunderson\",\n+      \"email\": \"Fanny.Saunderson@gmail.com\",\n+      \"password\": \"Abc@1234\"\n+    },\n+    {\n+      \"id\": 1,\n+      \"firstName\": \"Bobbi\",\n+      \"lastName\": \"Colp\",\n+      \"email\": \"Bobbi.Colp@gmail.com\",\n+      \"password\": \"Abc@1234\"\n+    },\n+    {\n+      \"id\": 2,\n+      \"firstName\": \"Nataline\",\n+      \"lastName\": \"Ajay\",\n+      \"email\": \"Nataline.Ajay@gmail.com\",\n+      \"password\": \"Abc@1234\"\n+    },\n+    {\n+      \"id\": 3,\n+      \"firstName\": \"Myrtice\",\n+      \"lastName\": \"Parsaye\",\n+      \"email\": \"Myrtice.Parsaye@gmail.com\",\n+      \"password\": \"Abc@1234\"\n+    },\n+  ]\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1657857046248,
+            "name": "Commit-0",
+            "content": "{\r\n    \"users\": [\r\n        {\r\n            \"id\": 1,\r\n            \"firstName\": \"fName_1\",\r\n            \"lastName\": \"lName_1\",\r\n            \"age\": 45\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"firstName\": \"fName_2\",\r\n            \"lastName\": \"lName_2\",\r\n            \"age\": 23\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"firstName\": \"fName_3\",\r\n            \"lastName\": \"lName_3\",\r\n            \"age\": 38\r\n        }\r\n    ]\r\n}"
+        }
+    ]
+}

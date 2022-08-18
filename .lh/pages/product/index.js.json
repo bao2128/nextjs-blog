@@ -1,0 +1,74 @@
+{
+    "sourceFile": "pages/product/index.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1657595429647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657595467522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,5 +5,7 @@\n             <h2>Product 2</h2>\r\n             <h2>Product 3</h2>\r\n         </>\r\n     )\r\n-}\n\\ No newline at end of file\n+}\r\n+\r\n+export default ProductList\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657609329237,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n+import Link from 'next/link'\r\n function ProductList() {\r\n     return (\r\n         <>\r\n+            <Link></Link>\r\n             <h2>Product 1</h2>\r\n             <h2>Product 2</h2>\r\n             <h2>Product 3</h2>\r\n         </>\r\n"
+                },
+                {
+                    "date": 1657609358989,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n import Link from 'next/link'\r\n function ProductList() {\r\n     return (\r\n         <>\r\n-            <Link></Link>\r\n+            <Link href='/'>\r\n+                <a>Home</a>\r\n+            </Link>\r\n             <h2>Product 1</h2>\r\n             <h2>Product 2</h2>\r\n             <h2>Product 3</h2>\r\n         </>\r\n"
+                },
+                {
+                    "date": 1657609477180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Link from 'next/link'\r\n+import Link from 'next/Link'\r\n function ProductList() {\r\n     return (\r\n         <>\r\n             <Link href='/'>\r\n"
+                },
+                {
+                    "date": 1657609905851,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,13 @@\n         <>\r\n             <Link href='/'>\r\n                 <a>Home</a>\r\n             </Link>\r\n-            <h2>Product 1</h2>\r\n+            <h2>\r\n+                <Link href='/product/1'>\r\n+                    <a>Product 1</a>\r\n+                </Link>\r\n+            </h2>\r\n             <h2>Product 2</h2>\r\n             <h2>Product 3</h2>\r\n         </>\r\n     )\r\n"
+                },
+                {
+                    "date": 1657610016915,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,10 +9,18 @@\n                 <Link href='/product/1'>\r\n                     <a>Product 1</a>\r\n                 </Link>\r\n             </h2>\r\n-            <h2>Product 2</h2>\r\n-            <h2>Product 3</h2>\r\n+            <h2>\r\n+                <Link href='/product/2'>\r\n+                    <a>Product 2</a>\r\n+                </Link>\r\n+            </h2>\r\n+            <h2>\r\n+                <Link href='/product/3'>\r\n+                    <a>Product 3</a>\r\n+                </Link>\r\n+            </h2>\r\n         </>\r\n     )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1657610143558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import Link from 'next/Link'\r\n-function ProductList() {\r\n+function ProductList(productId = 100) {\r\n     return (\r\n         <>\r\n             <Link href='/'>\r\n                 <a>Home</a>\r\n@@ -19,8 +19,13 @@\n                 <Link href='/product/3'>\r\n                     <a>Product 3</a>\r\n                 </Link>\r\n             </h2>\r\n+            <h2>\r\n+                <Link href={`/product/${productId}`}>\r\n+                    <a>Product {productId}</a>\r\n+                </Link>\r\n+            </h2>\r\n         </>\r\n     )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1657610265842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import Link from 'next/Link'\r\n-function ProductList(productId = 100) {\r\n+function ProductList({productId = 100}) {\r\n     return (\r\n         <>\r\n             <Link href='/'>\r\n                 <a>Home</a>\r\n"
+                },
+                {
+                    "date": 1657610437505,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n                     <a>Product 2</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n-                <Link href='/product/3'>\r\n+                <Link href='/product/3' replace>\r\n                     <a>Product 3</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n"
+                },
+                {
+                    "date": 1657611523251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n                     <a>Product 2</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n-                <Link href='/product/3' replace>\r\n+                <Link href='/product/3' replace>    /*sfs*/\r\n                     <a>Product 3</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n"
+                },
+                {
+                    "date": 1657611529943,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n                     <a>Product 2</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n-                <Link href='/product/3' replace>    /*sfs*/\r\n+                <Link href='/product/3' replace>    {/*sfs*/}\r\n                     <a>Product 3</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n"
+                },
+                {
+                    "date": 1657611535441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n                     <a>Product 2</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n-                <Link href='/product/3' replace>    {/*sfs*/}\r\n+                <Link href='/product/3' replace>\r\n                     <a>Product 3</a>\r\n                 </Link>\r\n             </h2>\r\n             <h2>\r\n"
+                },
+                {
+                    "date": 1659513729921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,8 @@\n import Link from 'next/Link'\r\n function ProductList({productId = 100}) {\r\n     return (\r\n         <>\r\n-            <Link href='/'>\r\n-                <a>Home</a>\r\n-            </Link>\r\n             <h2>\r\n                 <Link href='/product/1'>\r\n                     <a>Product 1</a>\r\n                 </Link>\r\n"
+                },
+                {
+                    "date": 1659513853815,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import Link from 'next/Link'\r\n-function ProductList({productId = 100}) {\r\n+function ProductList({productId = 100}) {   //default value is 100\r\n     return (\r\n         <>\r\n             <h2>\r\n                 <Link href='/product/1'>\r\n"
+                }
+            ],
+            "date": 1657595429647,
+            "name": "Commit-0",
+            "content": "function ProductList() {\r\n    return (\r\n        <>\r\n            <h2>Product 1</h2>\r\n            <h2>Product 2</h2>\r\n            <h2>Product 3</h2>\r\n        </>\r\n    )\r\n}"
+        }
+    ]
+}

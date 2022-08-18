@@ -1,0 +1,122 @@
+{
+    "sourceFile": "pages/api/User.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 26,
+            "patches": [
+                {
+                    "date": 1658305439700,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1658305629568,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,7 +12,7 @@\n             email: '',\r\n             password: '',\r\n         }\r\n         users.push(newUser)\r\n-\r\n+        res.status(201).json(newUser)\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658306681743,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,12 +6,12 @@\n     } else if (req.method === 'POST') {\r\n         const user = req.body.user\r\n         const newUser = {\r\n             id: Date.now(),\r\n-            firstName: '',\r\n-            lastName: '',\r\n-            email: '',\r\n-            password: '',\r\n+            firstName: user.firstName,\r\n+            lastName: user.lastName,\r\n+            email: user.email,\r\n+            password: user.password,\r\n         }\r\n         users.push(newUser)\r\n         res.status(201).json(newUser)\r\n     }\r\n"
+                },
+                {
+                    "date": 1658308948098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,16 +3,16 @@\n export default function handler(req, res) {\r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } else if (req.method === 'POST') {\r\n-        const user = req.body.user\r\n-        const newUser = {\r\n-            id: Date.now(),\r\n-            firstName: user.firstName,\r\n-            lastName: user.lastName,\r\n-            email: user.email,\r\n-            password: user.password,\r\n-        }\r\n-        users.push(newUser)\r\n-        res.status(201).json(newUser)\r\n+        // const user = req.body.user\r\n+        // const newUser = {\r\n+        //     id: Date.now(),\r\n+        //     firstName: user.firstName,\r\n+        //     lastName: user.lastName,\r\n+        //     email: user.email,\r\n+        //     password: user.password,\r\n+        // }\r\n+        // users.push(newUser)\r\n+        res.status(201).json(users[0])\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658309134130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,16 +3,16 @@\n export default function handler(req, res) {\r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } else if (req.method === 'POST') {\r\n-        // const user = req.body.user\r\n-        // const newUser = {\r\n-        //     id: Date.now(),\r\n-        //     firstName: user.firstName,\r\n-        //     lastName: user.lastName,\r\n-        //     email: user.email,\r\n-        //     password: user.password,\r\n-        // }\r\n-        // users.push(newUser)\r\n-        res.status(201).json(users[0])\r\n+        const user = req.body.user\r\n+        const newUser = {\r\n+            id: Date.now(),\r\n+            firstName: user.firstName,\r\n+            lastName: user.lastName,\r\n+            email: user.email,\r\n+            password: user.password,\r\n+        }\r\n+        users.push(newUser)\r\n+        res.status(201).json(newUser)\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658310724756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,7 +12,7 @@\n             email: user.email,\r\n             password: user.password,\r\n         }\r\n         users.push(newUser)\r\n-        res.status(201).json(newUser)\r\n+        res.status(201).json(users)\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658311127920,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,8 +11,8 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         }\r\n-        users.push(newUser)\r\n+        users.push(_.cloneDeep(newUser))\r\n         res.status(201).json(users)\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658311138108,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import _ from 'lodash';\r\n import { users } from '../../data/users';\r\n \r\n export default function handler(req, res) {\r\n     if (req.method === 'GET') {\r\n"
+                },
+                {
+                    "date": 1658312849398,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,7 +13,7 @@\n             email: user.email,\r\n             password: user.password,\r\n         }\r\n         users.push(_.cloneDeep(newUser))\r\n-        res.status(201).json(users)\r\n+        res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658313210911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,8 +12,11 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         }\r\n-        users.push(_.cloneDeep(newUser))\r\n-        res.status(201).json(_.cloneDeep(users))\r\n+        const push = async () => {\r\n+            await users.push(_.cloneDeep(newUser))\r\n+            await res.status(201).json(_.cloneDeep(users))\r\n+        }\r\n+        push()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658365918750,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,11 +12,11 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         }\r\n-        const push = async () => {\r\n-            await users.push(_.cloneDeep(newUser))\r\n-            await res.status(201).json(_.cloneDeep(users))\r\n+        const push = () => {\r\n+             users.push(_.cloneDeep(newUser))\r\n+             res.status(201).json(_.cloneDeep(users))\r\n         }\r\n         push()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658375989207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,8 +15,10 @@\n         }\r\n         const push = () => {\r\n              users.push(_.cloneDeep(newUser))\r\n              res.status(201).json(_.cloneDeep(users))\r\n+             console.log(`response ${res}`);\r\n+             \r\n         }\r\n         push()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658376078837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,14 +11,11 @@\n             firstName: user.firstName,\r\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n-        }\r\n-        const push = () => {\r\n+        };\r\n+        (function () {\r\n              users.push(_.cloneDeep(newUser))\r\n              res.status(201).json(_.cloneDeep(users))\r\n-             console.log(`response ${res}`);\r\n-             \r\n-        }\r\n-        push()\r\n+        })()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658377833129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n         (function () {\r\n-             users.push(_.cloneDeep(newUser))\r\n+             users.push(_.clone(newUser))\r\n              res.status(201).json(_.cloneDeep(users))\r\n         })()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658377927259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n         (function () {\r\n-             users.push(_.clone(newUser))\r\n+             users.push(_.cloneDeep(newUser))\r\n              res.status(201).json(_.cloneDeep(users))\r\n         })()\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658378487164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,10 +12,8 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n-        (function () {\r\n-             users.push(_.cloneDeep(newUser))\r\n-             res.status(201).json(_.cloneDeep(users))\r\n-        })()\r\n+        users.push(_.cloneDeep(newUser))\r\n+        res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658388110599,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import _ from 'lodash';\r\n-import { users } from '../../data/users';\r\n+import { users } from '../../data/data.json';\r\n \r\n export default function handler(req, res) {\r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n"
+                },
+                {
+                    "date": 1658396993689,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n import _ from 'lodash';\r\n-import { users } from '../../data/data.json';\r\n+import { users } from '../../data/users';\r\n \r\n export default function handler(req, res) {\r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n"
+                },
+                {
+                    "date": 1658713093301,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,11 @@\n import _ from 'lodash';\r\n+import { useAppContext } from '../../context/AppContext';\r\n import { users } from '../../data/users';\r\n \r\n export default function handler(req, res) {\r\n+    const [users, setUsers] = useAppContext()\r\n+\r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } else if (req.method === 'POST') {\r\n         const user = req.body.user\r\n@@ -12,8 +15,11 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n-        users.push(_.cloneDeep(newUser))\r\n+        // users.push(_.cloneDeep(newUser))        //wrong\r\n+        setUsers(prevState =>({\r\n+            ...prevState, users: {user}})\r\n+        )\r\n         res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658713289289,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,7 +19,7 @@\n         // users.push(_.cloneDeep(newUser))        //wrong\r\n         setUsers(prevState =>({\r\n             ...prevState, users: {user}})\r\n         )\r\n-        res.status(201).json(_.cloneDeep(users))\r\n+        // res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658713329408,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,20 +6,20 @@\n     const [users, setUsers] = useAppContext()\r\n \r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n-    } else if (req.method === 'POST') {\r\n-        const user = req.body.user\r\n-        const newUser = {\r\n-            id: Date.now(),\r\n-            firstName: user.firstName,\r\n-            lastName: user.lastName,\r\n-            email: user.email,\r\n-            password: user.password,\r\n-        };\r\n-        // users.push(_.cloneDeep(newUser))        //wrong\r\n-        setUsers(prevState =>({\r\n-            ...prevState, users: {user}})\r\n-        )\r\n-        // res.status(201).json(_.cloneDeep(users))\r\n-    }\r\n+    // } else if (req.method === 'POST') {\r\n+    //     const user = req.body.user\r\n+    //     const newUser = {\r\n+    //         id: Date.now(),\r\n+    //         firstName: user.firstName,\r\n+    //         lastName: user.lastName,\r\n+    //         email: user.email,\r\n+    //         password: user.password,\r\n+    //     };\r\n+    //     // users.push(_.cloneDeep(newUser))        //wrong\r\n+    //     setUsers(prevState =>({\r\n+    //         ...prevState, users: {user}})\r\n+    //     )\r\n+    //     // res.status(201).json(_.cloneDeep(users))\r\n+    // }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658713344663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,10 @@\n     const [users, setUsers] = useAppContext()\r\n \r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n-    // } else if (req.method === 'POST') {\r\n+    } \r\n+    // else if (req.method === 'POST') {\r\n     //     const user = req.body.user\r\n     //     const newUser = {\r\n     //         id: Date.now(),\r\n     //         firstName: user.firstName,\r\n"
+                },
+                {
+                    "date": 1658713357240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import { useAppContext } from '../../context/AppContext';\r\n import { users } from '../../data/users';\r\n \r\n export default function handler(req, res) {\r\n-    const [users, setUsers] = useAppContext()\r\n+    // const [users, setUsers] = useAppContext()\r\n \r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } \r\n"
+                },
+                {
+                    "date": 1658713394337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,20 +7,21 @@\n \r\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } \r\n-    // else if (req.method === 'POST') {\r\n-    //     const user = req.body.user\r\n-    //     const newUser = {\r\n-    //         id: Date.now(),\r\n-    //         firstName: user.firstName,\r\n-    //         lastName: user.lastName,\r\n-    //         email: user.email,\r\n-    //         password: user.password,\r\n-    //     };\r\n-    //     // users.push(_.cloneDeep(newUser))        //wrong\r\n-    //     setUsers(prevState =>({\r\n-    //         ...prevState, users: {user}})\r\n-    //     )\r\n-    //     // res.status(201).json(_.cloneDeep(users))\r\n-    // }\r\n+    else if (req.method === 'POST') {\r\n+        const [users, setUsers] = useAppContext()\r\n+        const user = req.body.user\r\n+        const newUser = {\r\n+            id: Date.now(),\r\n+            firstName: user.firstName,\r\n+            lastName: user.lastName,\r\n+            email: user.email,\r\n+            password: user.password,\r\n+        };\r\n+        // users.push(_.cloneDeep(newUser))        //wrong\r\n+        setUsers(prevState =>({\r\n+            ...prevState, users: {user}})\r\n+        )\r\n+        // res.status(201).json(_.cloneDeep(users))\r\n+    }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658713412613,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,7 +21,7 @@\n         // users.push(_.cloneDeep(newUser))        //wrong\r\n         setUsers(prevState =>({\r\n             ...prevState, users: {user}})\r\n         )\r\n-        // res.status(201).json(_.cloneDeep(users))\r\n+        res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658714546496,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,20 +8,20 @@\n     if (req.method === 'GET') {\r\n         res.status(200).json(users)\r\n     } \r\n     else if (req.method === 'POST') {\r\n-        const [users, setUsers] = useAppContext()\r\n+        // const [users, setUsers] = useAppContext()\r\n         const user = req.body.user\r\n         const newUser = {\r\n             id: Date.now(),\r\n             firstName: user.firstName,\r\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n-        // users.push(_.cloneDeep(newUser))        //wrong\r\n-        setUsers(prevState =>({\r\n-            ...prevState, users: {user}})\r\n-        )\r\n+        users.push(_.cloneDeep(newUser))        //wrong\r\n+        // setUsers(prevState =>({\r\n+        //     ...prevState, users: {user}})\r\n+        // )\r\n         res.status(201).json(_.cloneDeep(users))\r\n     }\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660630074099,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n             lastName: user.lastName,\r\n             email: user.email,\r\n             password: user.password,\r\n         };\r\n-        users.push(_.cloneDeep(newUser))        //wrong\r\n+        // users.push(_.cloneDeep(newUser))        //wrong\r\n         // setUsers(prevState =>({\r\n         //     ...prevState, users: {user}})\r\n         // )\r\n         res.status(201).json(_.cloneDeep(users))\r\n"
+                }
+            ],
+            "date": 1658305439700,
+            "name": "Commit-0",
+            "content": "import { users } from '../../data/users';\r\n\r\nexport default function handler(req, res) {\r\n    if (req.method === 'GET') {\r\n        res.status(200).json(users)\r\n    } else if (req.method === 'POST') {\r\n        const user = req.body.user\r\n        const newUser = {\r\n            id: Date.now(),\r\n            firstName: '',\r\n            lastName: '',\r\n            email: '',\r\n            password: '',\r\n        }\r\n        users.push(newUser)\r\n\r\n    }\r\n}"
+        }
+    ]
+}

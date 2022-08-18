@@ -1,0 +1,54 @@
+{
+    "sourceFile": "pages/_app.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1657592582633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657614604490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import { Component } from \"react\";\r\n-\r\n function MyApp({Component, pageProps}) {\r\n     return <Component {...pageProps}/>\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1657766012174,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,6 @@\n+import './user/login/styles.css'\r\n+\r\n function MyApp({Component, pageProps}) {\r\n     return <Component {...pageProps}/>\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1657772990905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import './user/login/styles.css'\r\n+import './user/register/styles.css'\r\n \r\n function MyApp({Component, pageProps}) {\r\n     return <Component {...pageProps}/>\r\n }\r\n"
+                },
+                {
+                    "date": 1657783686231,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,12 @@\n import './user/register/styles.css'\r\n+import Layout from '../components/layout.tsx'\r\n \r\n function MyApp({Component, pageProps}) {\r\n-    return <Component {...pageProps}/>\r\n+    return (\r\n+        <Layout>\r\n+            <Component {...pageProps}/>\r\n+        </Layout>\r\n+    )\r\n }\r\n \r\n export default MyApp\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657783861264,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import './user/register/styles.css'\r\n+// import './user/register/styles.css'\r\n import Layout from '../components/layout.tsx'\r\n \r\n function MyApp({Component, pageProps}) {\r\n     return (\r\n"
+                },
+                {
+                    "date": 1657783943858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,10 @@\n // import './user/register/styles.css'\r\n import Layout from '../components/layout.tsx'\r\n \r\n-function MyApp({Component, pageProps}) {\r\n-    return (\r\n-        <Layout>\r\n-            <Component {...pageProps}/>\r\n-        </Layout>\r\n-    )\r\n-}\r\n-\r\n-export default MyApp\n\\ No newline at end of file\n+export default function MyApp({ Component, pageProps }) {\r\n+    // Use the layout defined at the page level, if available\r\n+    const getLayout = Component.getLayout || ((page) => page)\r\n+  \r\n+    return getLayout(<Component {...pageProps} />)\r\n+  }\r\n+  \n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657784158451,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,6 @@\n // import './user/register/styles.css'\r\n-import Layout from '../components/layout.tsx'\r\n+// import Layout from '../components/layout.tsx'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n"
+                },
+                {
+                    "date": 1657787219891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n+import '../components/register.module.css';\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n"
+                },
+                {
+                    "date": 1657787244180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n-import '../components/register.module.css';\r\n+// import '../components/register.module.css';\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n"
+                }
+            ],
+            "date": 1657592582633,
+            "name": "Commit-0",
+            "content": "import { Component } from \"react\";\r\n\r\nfunction MyApp({Component, pageProps}) {\r\n    return <Component {...pageProps}/>\r\n}\r\n\r\nexport default MyApp"
+        }
+    ]
+}

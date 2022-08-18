@@ -1,0 +1,306 @@
+{
+    "sourceFile": "pages/user/register/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 72,
+            "patches": [
+                {
+                    "date": 1657784147710,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657784451749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"./styles.css\";\r\n+import \"..components/register.styles.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657785759858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"..components/register.styles.css\";\r\n+// import \"..components/register.styles.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657786441920,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-// import \"..components/register.styles.css\";\r\n+import \"..components/register.module.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657786452493,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"..components/register.module.css\";\r\n+import \"../components/register.module.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657786564906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"../components/register.module.css\";\r\n+import \"./components/register.module.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657786880671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"./components/register.module.css\";\r\n+import \"../../components/register.module.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657787100840,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"../../components/register.module.css\";\r\n+import \"./components/register.module.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657787123433,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"./components/register.module.css\";\r\n \r\n+\r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n   age: number;\r\n"
+                },
+                {
+                    "date": 1657787387813,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,17 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n+import Layout from '../../../components/layout'\r\n \r\n-\r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n   age: number;\r\n   example: string;\r\n }\r\n \r\n-function App() {\r\n+function register() {\r\n   const {\r\n     register,\r\n     handleSubmit,\r\n     watch,\r\n@@ -66,4 +66,12 @@\n   );\r\n }\r\n \r\n export default App\r\n+\r\n+register.getLayout = function getLayout(page) {\r\n+  return (\r\n+    <Layout>\r\n+      {page}\r\n+    </Layout>\r\n+  )\r\n+}\r\n"
+                },
+                {
+                    "date": 1657787397464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -65,9 +65,9 @@\n     </form>\r\n   );\r\n }\r\n \r\n-export default App\r\n+export default register\r\n \r\n register.getLayout = function getLayout(page) {\r\n   return (\r\n     <Layout>\r\n"
+                },
+                {
+                    "date": 1657787587240,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import Layout from '../../../components/layout'\r\n+import Layout from '../../../components/layout';\r\n+import './register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657787621059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import Layout from '../../../components/layout';\r\n-import './register.module.css';\r\n+// import Layout from '../../../components/layout';\r\n+// import './register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657787752968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-// import Layout from '../../../components/layout';\r\n+import Layout from '../../../components/layout';\r\n // import './register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n"
+                },
+                {
+                    "date": 1657787807043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n import Layout from '../../../components/layout';\r\n-// import './register.module.css';\r\n+import '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657788238060,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n import Layout from '../../../components/layout';\r\n-import '../../../components/register.module.css';\r\n+import styles from '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n@@ -26,45 +26,47 @@\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n   console.log(\"error\", {...errors});\r\n   \r\n   return (\r\n-    <form onSubmit={handleSubmit(onSubmit)}>\r\n-      <fieldset>\r\n-        <legend>Register</legend>\r\n-        <label>First Name:</label>\r\n-        <input\r\n-          {...register(\"firstName\", {\r\n-            required: true,\r\n-            maxLength: 20,\r\n-            pattern: /^[A-Za-z ]+$/i\r\n-          })}\r\n-        />\r\n-        {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n-        {errors?.firstName?.type === \"maxLength\" && (\r\n-          <p>Maximum length 20 characters</p>\r\n-        )}\r\n-        {errors?.firstName?.type === \"pattern\" && (\r\n-          <p>Alphabetical characters only</p>\r\n-        )}\r\n-        \r\n-        <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n-        {errors?.lastName?.type === \"pattern\" && (\r\n-          <p>Alphabetical characters only</p>\r\n-        )}\r\n+    <div className={styles.body}>\r\n+      <form onSubmit={handleSubmit(onSubmit)}>\r\n+        <fieldset>\r\n+          <legend>Register</legend>\r\n+          <label>First Name:</label>\r\n+          <input\r\n+            {...register(\"firstName\", {\r\n+              required: true,\r\n+              maxLength: 20,\r\n+              pattern: /^[A-Za-z ]+$/i\r\n+            })}\r\n+          />\r\n+          {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n+          {errors?.firstName?.type === \"maxLength\" && (\r\n+            <p>Maximum length 20 characters</p>\r\n+          )}\r\n+          {errors?.firstName?.type === \"pattern\" && (\r\n+            <p>Alphabetical characters only</p>\r\n+          )}\r\n+          \r\n+          <label>Last Name:</label>\r\n+          <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n+          {errors?.lastName?.type === \"pattern\" && (\r\n+            <p>Alphabetical characters only</p>\r\n+          )}\r\n \r\n-        <label>Age:</label>\r\n-        <input {...register(\"age\", { \r\n-          min: 18,\r\n-          max: 99,\r\n-          pattern: /[0-9]+/\r\n-          })} />\r\n-        {errors.age && (\r\n-          <p>You Must be older than 18 and younger than 99 years old</p>\r\n-        )}\r\n-        <input type=\"submit\" />\r\n-      </fieldset>\r\n-    </form>\r\n+          <label>Age:</label>\r\n+          <input {...register(\"age\", { \r\n+            min: 18,\r\n+            max: 99,\r\n+            pattern: /[0-9]+/\r\n+            })} />\r\n+          {errors.age && (\r\n+            <p>You Must be older than 18 and younger than 99 years old</p>\r\n+          )}\r\n+          <input type=\"submit\" />\r\n+        </fieldset>\r\n+      </form>\r\n+    </div>\r\n   );\r\n }\r\n \r\n export default register\r\n"
+                },
+                {
+                    "date": 1657790016788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import Layout from '../../../components/layout';\r\n+import Layout from '../../../layout/layout';\r\n import styles from '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n"
+                },
+                {
+                    "date": 1657790022529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n import Layout from '../../../layout/layout';\r\n-import styles from '../../../components/register.module.css';\r\n+// import styles from '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657790032819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n   console.log(\"error\", {...errors});\r\n   \r\n   return (\r\n-    <div className={styles.body}>\r\n+    <div>\r\n       <form onSubmit={handleSubmit(onSubmit)}>\r\n         <fieldset>\r\n           <legend>Register</legend>\r\n           <label>First Name:</label>\r\n"
+                },
+                {
+                    "date": 1657790786225,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n export default register\r\n \r\n register.getLayout = function getLayout(page) {\r\n   return (\r\n-    <Layout>\r\n+    <Layout pageTitle={'Register'}>\r\n       {page}\r\n     </Layout>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1657791927037,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n import Layout from '../../../layout/layout';\r\n-// import styles from '../../../components/register.module.css';\r\n+import styles from '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657792160981,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n   console.log(\"error\", {...errors});\r\n   \r\n   return (\r\n     <div>\r\n-      <form onSubmit={handleSubmit(onSubmit)}>\r\n+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n         <fieldset>\r\n           <legend>Register</legend>\r\n           <label>First Name:</label>\r\n           <input\r\n"
+                },
+                {
+                    "date": 1657792214251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n     <div>\r\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n         <fieldset>\r\n           <legend>Register</legend>\r\n-          <label>First Name:</label>\r\n+          <label className={styles.label}>First Name:</label>\r\n           <input\r\n             {...register(\"firstName\", {\r\n               required: true,\r\n               maxLength: 20,\r\n"
+                },
+                {
+                    "date": 1657792247329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n         <fieldset>\r\n           <legend>Register</legend>\r\n           <label className={styles.label}>First Name:</label>\r\n-          <input\r\n+          <input className={styles.input}\r\n             {...register(\"firstName\", {\r\n               required: true,\r\n               maxLength: 20,\r\n               pattern: /^[A-Za-z ]+$/i\r\n"
+                },
+                {
+                    "date": 1657792273968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n             })}\r\n           />\r\n           {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n           {errors?.firstName?.type === \"maxLength\" && (\r\n-            <p>Maximum length 20 characters</p>\r\n+            <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n             <p>Alphabetical characters only</p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657792287754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n           {errors?.firstName?.type === \"maxLength\" && (\r\n             <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n-            <p>Alphabetical characters only</p>\r\n+            <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n           \r\n           <label>Last Name:</label>\r\n           <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n"
+                },
+                {
+                    "date": 1657792300166,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -46,9 +46,9 @@\n           {errors?.firstName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n           \r\n-          <label>Last Name:</label>\r\n+          <label className={styles.label}>Last Name:</label>\r\n           <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n           {errors?.lastName?.type === \"pattern\" && (\r\n             <p>Alphabetical characters only</p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657792325814,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,11 @@\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n           \r\n           <label className={styles.label}>Last Name:</label>\r\n-          <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n+          <input className={styles.input}\r\n+            {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })}\r\n+          />\r\n           {errors?.lastName?.type === \"pattern\" && (\r\n             <p>Alphabetical characters only</p>\r\n           )}\r\n \r\n"
+                },
+                {
+                    "date": 1657792340563,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n           <input className={styles.input}\r\n             {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })}\r\n           />\r\n           {errors?.lastName?.type === \"pattern\" && (\r\n-            <p>Alphabetical characters only</p>\r\n+            <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n \r\n           <label>Age:</label>\r\n           <input {...register(\"age\", { \r\n"
+                },
+                {
+                    "date": 1657792377123,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -54,18 +54,20 @@\n           {errors?.lastName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n \r\n-          <label>Age:</label>\r\n-          <input {...register(\"age\", { \r\n+          <label className={styles.label}>Age:</label>\r\n+          <input className={styles.input}\r\n+            {...register(\"age\", { \r\n             min: 18,\r\n             max: 99,\r\n             pattern: /[0-9]+/\r\n-            })} />\r\n+            })} \r\n+          />\r\n           {errors.age && (\r\n-            <p>You Must be older than 18 and younger than 99 years old</p>\r\n+            <p className={styles.p}>You Must be older than 18 and younger than 99 years old</p>\r\n           )}\r\n-          <input type=\"submit\" />\r\n+          <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1657794415922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n           {errors?.firstName?.type === \"maxLength\" && (\r\n             <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n-            <p className={styles.p}>Alphabetical characters only</p>\r\n+            <p className={styles.p,}>Alphabetical characters only</p>\r\n           )}\r\n           \r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n"
+                },
+                {
+                    "date": 1657794781245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n           {errors?.firstName?.type === \"maxLength\" && (\r\n             <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n-            <p className={styles.p,}>Alphabetical characters only</p>\r\n+            <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n           \r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n"
+                },
+                {
+                    "date": 1657847164972,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,9 +38,10 @@\n               maxLength: 20,\r\n               pattern: /^[A-Za-z ]+$/i\r\n             })}\r\n           />\r\n-          {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n+          {errors?.firstName?.type === \"required\" && \r\n+            <p className={styles.p}>This field cannot be empty</p>}\r\n           {errors?.firstName?.type === \"maxLength\" && (\r\n             <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n"
+                },
+                {
+                    "date": 1657847326361,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,11 +58,11 @@\n \r\n           <label className={styles.label}>Age:</label>\r\n           <input className={styles.input}\r\n             {...register(\"age\", { \r\n-            min: 18,\r\n-            max: 99,\r\n-            pattern: /[0-9]+/\r\n+              min: 18,\r\n+              max: 99,\r\n+              pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n           {errors.age && (\r\n             <p className={styles.p}>You Must be older than 18 and younger than 99 years old</p>\r\n"
+                },
+                {
+                    "date": 1657847667528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,11 @@\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n           {errors.age && (\r\n-            <p className={styles.p}>You Must be older than 18 and younger than 99 years old</p>\r\n+            <p className={styles.p}>\r\n+              You Must be older than 18 and younger than 99 years old\r\n+            </p>\r\n           )}\r\n           <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n"
+                },
+                {
+                    "date": 1657847915900,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n-  console.log(\"error\", {...errors});\r\n+  console.log(\"error\", errors.age.ref.value);\r\n   \r\n   return (\r\n     <div>\r\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n"
+                },
+                {
+                    "date": 1657847929172,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n-  console.log(\"error\", errors.age.ref.value);\r\n+  console.log(\"error\", errors.age?.ref.value);\r\n   \r\n   return (\r\n     <div>\r\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n"
+                },
+                {
+                    "date": 1657847988447,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n-  console.log(\"error\", errors.age?.ref.value);\r\n+  console.log(\"error\", {errors});\r\n   \r\n   return (\r\n     <div>\r\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n"
+                },
+                {
+                    "date": 1657849382105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors.age && (\r\n+          {errors.age.type === \"pattern\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849390561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors.age.type === \"pattern\" && (\r\n+          {errors?.age?.type === \"pattern\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849396564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"pattern\" && (\r\n+          {errors?.age.type === \"pattern\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849402550,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age.type === \"pattern\" && (\r\n+          {errors?.age?.type === \"pattern\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849450185,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"pattern\" && (\r\n+          {errors?.age?.type === \"min\" || errors?.age?.type === \"max\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849526354,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"min\" || errors?.age?.type === \"max\" && (\r\n+          {errors?.age?.type === \"min\" | errors?.age?.type === \"max\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849535820,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"min\" | errors?.age?.type === \"max\" && (\r\n+          {errors?.age?.type === \"min\" || errors?.age?.type === \"max\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657849589168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"min\" || errors?.age?.type === \"max\" && (\r\n+          {errors?.age?.type === \"max\" || errors?.age?.type === \"min\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657850034229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               max: 99,\r\n               pattern: /^[0-9]+$/\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"max\" || errors?.age?.type === \"min\" && (\r\n+          {errors?.age?.type === \"min\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657850173895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,8 +68,18 @@\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n+          {errors?.age?.type === \"max\" && (\r\n+            <p className={styles.p}>\r\n+              You Must be older than 18 and younger than 99 years old\r\n+            </p>\r\n+          )}\r\n+          {errors?.age?.type === \"pattern\" && (\r\n+            <p className={styles.p}>\r\n+              Number only\r\n+            </p>\r\n+          )}\r\n           <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1657850560016,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n-\r\n+import { ErrorMessage } from \"@hookform/error-message\";\r\n import Layout from '../../../layout/layout';\r\n import styles from '../../../components/register.module.css';\r\n \r\n interface IFormInput {\r\n@@ -78,8 +78,20 @@\n             <p className={styles.p}>\r\n               Number only\r\n             </p>\r\n           )}\r\n+          <ErrorMessage\r\n+            errors={errors}\r\n+            name=\"age\"\r\n+            render={({ messages }) => {\r\n+              console.log(\"messages\", messages);\r\n+              return messages\r\n+                ? Object.entries(messages).map(([type, message]) => (\r\n+                  <p key={type}>{message}</p>\r\n+                ))\r\n+                : null;\r\n+            }}\r\n+          />\r\n           <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1657850626074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,12 +60,15 @@\n           <input className={styles.input}\r\n             {...register(\"age\", { \r\n               min: 18,\r\n               max: 99,\r\n-              pattern: /^[0-9]+$/\r\n+              pattern: {\r\n+                value: /^[0-9]+$/,\r\n+                message: \"Number only\"\r\n+              },\r\n             })} \r\n           />\r\n-          {errors?.age?.type === \"min\" && (\r\n+          {/* {errors?.age?.type === \"min\" && (\r\n             <p className={styles.p}>\r\n               You Must be older than 18 and younger than 99 years old\r\n             </p>\r\n           )}\r\n@@ -77,9 +80,9 @@\n           {errors?.age?.type === \"pattern\" && (\r\n             <p className={styles.p}>\r\n               Number only\r\n             </p>\r\n-          )}\r\n+          )} */}\r\n           <ErrorMessage\r\n             errors={errors}\r\n             name=\"age\"\r\n             render={({ messages }) => {\r\n"
+                },
+                {
+                    "date": 1657850676957,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,10 +58,16 @@\n \r\n           <label className={styles.label}>Age:</label>\r\n           <input className={styles.input}\r\n             {...register(\"age\", { \r\n-              min: 18,\r\n-              max: 99,\r\n+              min: {\r\n+                value: 18,\r\n+                message: \"You Must be older than 18 and younger than 99 years old\"\r\n+              },\r\n+              max: {\r\n+                value: 99,\r\n+                message: \"You Must be older than 18 and younger than 99 years old\"\r\n+              },\r\n               pattern: {\r\n                 value: /^[0-9]+$/,\r\n                 message: \"Number only\"\r\n               },\r\n"
+                },
+                {
+                    "date": 1657850891778,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,23 +72,9 @@\n                 message: \"Number only\"\r\n               },\r\n             })} \r\n           />\r\n-          {/* {errors?.age?.type === \"min\" && (\r\n-            <p className={styles.p}>\r\n-              You Must be older than 18 and younger than 99 years old\r\n-            </p>\r\n-          )}\r\n-          {errors?.age?.type === \"max\" && (\r\n-            <p className={styles.p}>\r\n-              You Must be older than 18 and younger than 99 years old\r\n-            </p>\r\n-          )}\r\n-          {errors?.age?.type === \"pattern\" && (\r\n-            <p className={styles.p}>\r\n-              Number only\r\n-            </p>\r\n-          )} */}\r\n+\r\n           <ErrorMessage\r\n             errors={errors}\r\n             name=\"age\"\r\n             render={({ messages }) => {\r\n"
+                },
+                {
+                    "date": 1657851275823,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import * as React from \"react\";\r\n import { useForm } from \"react-hook-form\";\r\n+import _ from \"lodash/fp\";\r\n import { ErrorMessage } from \"@hookform/error-message\";\r\n import Layout from '../../../layout/layout';\r\n import styles from '../../../components/register.module.css';\r\n \r\n@@ -78,10 +79,9 @@\n             errors={errors}\r\n             name=\"age\"\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n-              return messages\r\n-                ? Object.entries(messages).map(([type, message]) => (\r\n+              return messages? _.entries(messages).map(([type, message]) => (\r\n                   <p key={type}>{message}</p>\r\n                 ))\r\n                 : null;\r\n             }}\r\n"
+                },
+                {
+                    "date": 1657851350027,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,8 +85,18 @@\n                 ))\r\n                 : null;\r\n             }}\r\n           />\r\n+          <ErrorMessage\r\n+            errors={errors}\r\n+            name=\"age\"\r\n+            render={({ messages }) =>\r\n+              messages &&\r\n+              Object.entries(messages).map(([type, message]) => (\r\n+                <p key={type}>{message}</p>\r\n+              ))\r\n+            }\r\n+          />\r\n           <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1657851374066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,23 +73,11 @@\n                 message: \"Number only\"\r\n               },\r\n             })} \r\n           />\r\n-\r\n           <ErrorMessage\r\n             errors={errors}\r\n             name=\"age\"\r\n-            render={({ messages }) => {\r\n-              console.log(\"messages\", messages);\r\n-              return messages? _.entries(messages).map(([type, message]) => (\r\n-                  <p key={type}>{message}</p>\r\n-                ))\r\n-                : null;\r\n-            }}\r\n-          />\r\n-          <ErrorMessage\r\n-            errors={errors}\r\n-            name=\"age\"\r\n             render={({ messages }) =>\r\n               messages &&\r\n               Object.entries(messages).map(([type, message]) => (\r\n                 <p key={type}>{message}</p>\r\n"
+                },
+                {
+                    "date": 1657851466202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -76,14 +76,16 @@\n           />\r\n           <ErrorMessage\r\n             errors={errors}\r\n             name=\"age\"\r\n-            render={({ messages }) =>\r\n-              messages &&\r\n-              Object.entries(messages).map(([type, message]) => (\r\n-                <p key={type}>{message}</p>\r\n-              ))\r\n-            }\r\n+            render={({ messages }) => {\r\n+              console.log(\"messages\", messages);\r\n+              return messages\r\n+                ? Object.entries(messages).map(([type, message]) => (\r\n+                  <p key={type}>{message}</p>\r\n+                ))\r\n+                : null;\r\n+            }}\r\n           />\r\n           <input className={styles.input} type=\"submit\" />\r\n         </fieldset>\r\n       </form>\r\n"
+                },
+                {
+                    "date": 1657851511726,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -79,9 +79,9 @@\n             name=\"age\"\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n-                ? Object.entries(messages).map(([type, message]) => (\r\n+                ? _.entries(messages).map(([type, message]) => (\r\n                   <p key={type}>{message}</p>\r\n                 ))\r\n                 : null;\r\n             }}\r\n"
+                },
+                {
+                    "date": 1657851732806,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,11 @@\n     register,\r\n     handleSubmit,\r\n     watch,\r\n     formState: { errors }\r\n-  } = useForm<IFormInput>();\r\n+  } = useForm<IFormInput>(\r\n+    {criteriaMode: \"all\"}\r\n+  );\r\n \r\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n"
+                },
+                {
+                    "date": 1657851786684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -82,9 +82,9 @@\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n                 ? _.entries(messages).map(([type, message]) => (\r\n-                  <p key={type}>{message}</p>\r\n+                  <p key={type} className={styles.p}>{message}</p>\r\n                 ))\r\n                 : null;\r\n             }}\r\n           />\r\n"
+                },
+                {
+                    "date": 1657851835311,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,14 +63,10 @@\n           <input className={styles.input}\r\n             {...register(\"age\", { \r\n               min: {\r\n                 value: 18,\r\n-                message: \"You Must be older than 18 and younger than 99 years old\"\r\n+                message: \"You Must be older than 18\"\r\n               },\r\n-              max: {\r\n-                value: 99,\r\n-                message: \"You Must be older than 18 and younger than 99 years old\"\r\n-              },\r\n               pattern: {\r\n                 value: /^[0-9]+$/,\r\n                 message: \"Number only\"\r\n               },\r\n"
+                },
+                {
+                    "date": 1657851854005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n           <input className={styles.input}\r\n             {...register(\"age\", { \r\n               min: {\r\n                 value: 18,\r\n-                message: \"You Must be older than 18\"\r\n+                message: \"You must be older than 18\"\r\n               },\r\n               pattern: {\r\n                 value: /^[0-9]+$/,\r\n                 message: \"Number only\"\r\n"
+                },
+                {
+                    "date": 1657852226979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,12 @@\n     handleSubmit,\r\n     watch,\r\n     formState: { errors }\r\n   } = useForm<IFormInput>(\r\n-    {criteriaMode: \"all\"}\r\n+    {\r\n+      mode: \"onChange\",\r\n+      criteriaMode: \"all\"\r\n+    }\r\n   );\r\n \r\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n"
+                },
+                {
+                    "date": 1657852265512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,8 @@\n     watch,\r\n     formState: { errors }\r\n   } = useForm<IFormInput>(\r\n     {\r\n-      mode: \"onChange\",\r\n       criteriaMode: \"all\"\r\n     }\r\n   );\r\n \r\n"
+                },
+                {
+                    "date": 1657852383589,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,9 +75,9 @@\n             })} \r\n           />\r\n           <ErrorMessage\r\n             errors={errors}\r\n-            name=\"age\"\r\n+            name={\"age\" || \"firstName\"}\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n                 ? _.entries(messages).map(([type, message]) => (\r\n"
+                },
+                {
+                    "date": 1657852573530,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -75,9 +75,9 @@\n             })} \r\n           />\r\n           <ErrorMessage\r\n             errors={errors}\r\n-            name={\"age\" || \"firstName\"}\r\n+            name={\"age\"}\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n                 ? _.entries(messages).map(([type, message]) => (\r\n"
+                },
+                {
+                    "date": 1657853056863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n     watch,\r\n     formState: { errors }\r\n   } = useForm<IFormInput>(\r\n     {\r\n-      criteriaMode: \"all\"\r\n+      criteriaMode: \"all\"   //display multiple errors\r\n     }\r\n   );\r\n \r\n   const onSubmit = (data: IFormInput) => {\r\n@@ -43,16 +43,16 @@\n               maxLength: 20,\r\n               pattern: /^[A-Za-z ]+$/i\r\n             })}\r\n           />\r\n-          {errors?.firstName?.type === \"required\" && \r\n+          {/* {errors?.firstName?.type === \"required\" && \r\n             <p className={styles.p}>This field cannot be empty</p>}\r\n           {errors?.firstName?.type === \"maxLength\" && (\r\n             <p className={styles.p}>Maximum length 20 characters</p>\r\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n-          )}\r\n+          )} */}\r\n           \r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n             {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })}\r\n@@ -75,9 +75,9 @@\n             })} \r\n           />\r\n           <ErrorMessage\r\n             errors={errors}\r\n-            name={\"age\"}\r\n+            name={\"age\" || \"firstName\"}\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n                 ? _.entries(messages).map(([type, message]) => (\r\n"
+                },
+                {
+                    "date": 1657853160864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,20 @@\n           )}\r\n           {errors?.firstName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )} */}\r\n-          \r\n+          <ErrorMessage\r\n+            errors={errors}\r\n+            name={\"firstName\"}\r\n+            render={({ messages }) => {\r\n+              console.log(\"messages\", messages);\r\n+              return messages\r\n+                ? _.entries(messages).map(([type, message]) => (\r\n+                  <p key={type} className={styles.p}>{message}</p>\r\n+                ))\r\n+                : null;\r\n+            }}\r\n+          />\r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n             {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })}\r\n           />\r\n@@ -75,9 +86,9 @@\n             })} \r\n           />\r\n           <ErrorMessage\r\n             errors={errors}\r\n-            name={\"age\" || \"firstName\"}\r\n+            name={\"age\"}\r\n             render={({ messages }) => {\r\n               console.log(\"messages\", messages);\r\n               return messages\r\n                 ? _.entries(messages).map(([type, message]) => (\r\n"
+                },
+                {
+                    "date": 1657853254306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,11 +38,17 @@\n           <legend>Register</legend>\r\n           <label className={styles.label}>First Name:</label>\r\n           <input className={styles.input}\r\n             {...register(\"firstName\", {\r\n-              required: true,\r\n-              maxLength: 20,\r\n-              pattern: /^[A-Za-z ]+$/i\r\n+              required: \"This field cannot be empty\",\r\n+              maxLength: {\r\n+                value: 20,\r\n+                message: \"Maximum length 20 characters\"\r\n+              },\r\n+              pattern: {\r\n+                value: /^[A-Za-z ]+$/i,\r\n+                message: \"Alphabetical characters only\"\r\n+              }\r\n             })}\r\n           />\r\n           {/* {errors?.firstName?.type === \"required\" && \r\n             <p className={styles.p}>This field cannot be empty</p>}\r\n"
+                },
+                {
+                    "date": 1657853332076,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,9 +71,9 @@\n             }}\r\n           />\r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n-            {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })}\r\n+            {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })}\r\n           />\r\n           {errors?.lastName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657853403464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -71,9 +71,9 @@\n             }}\r\n           />\r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n-            {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })}\r\n+            {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })}\r\n           />\r\n           {errors?.lastName?.type === \"pattern\" && (\r\n             <p className={styles.p}>Alphabetical characters only</p>\r\n           )}\r\n"
+                },
+                {
+                    "date": 1657853516344,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,16 +49,8 @@\n                 message: \"Alphabetical characters only\"\r\n               }\r\n             })}\r\n           />\r\n-          {/* {errors?.firstName?.type === \"required\" && \r\n-            <p className={styles.p}>This field cannot be empty</p>}\r\n-          {errors?.firstName?.type === \"maxLength\" && (\r\n-            <p className={styles.p}>Maximum length 20 characters</p>\r\n-          )}\r\n-          {errors?.firstName?.type === \"pattern\" && (\r\n-            <p className={styles.p}>Alphabetical characters only</p>\r\n-          )} */}\r\n           <ErrorMessage\r\n             errors={errors}\r\n             name={\"firstName\"}\r\n             render={({ messages }) => {\r\n@@ -69,8 +61,9 @@\n                 ))\r\n                 : null;\r\n             }}\r\n           />\r\n+\r\n           <label className={styles.label}>Last Name:</label>\r\n           <input className={styles.input}\r\n             {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })}\r\n           />\r\n"
+                },
+                {
+                    "date": 1657855601031,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -95,9 +95,9 @@\n                 ))\r\n                 : null;\r\n             }}\r\n           />\r\n-          <input className={styles.input} type=\"submit\" />\r\n+          <input className={styles.input} type=\"submit\" value=\"Submit\"/>\r\n         </fieldset>\r\n       </form>\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1657856342529,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n-  console.log(\"error\", {errors});\r\n+  // console.log(\"error\", {errors});\r\n   \r\n   return (\r\n     <div>\r\n       <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>\r\n"
+                }
+            ],
+            "date": 1657784147710,
+            "name": "Commit-0",
+            "content": "import * as React from \"react\";\r\nimport { useForm } from \"react-hook-form\";\r\n\r\nimport \"./styles.css\";\r\n\r\ninterface IFormInput {\r\n  firstName: string;\r\n  lastName: string;\r\n  age: number;\r\n  example: string;\r\n}\r\n\r\nfunction App() {\r\n  const {\r\n    register,\r\n    handleSubmit,\r\n    watch,\r\n    formState: { errors }\r\n  } = useForm<IFormInput>();\r\n\r\n  const onSubmit = (data: IFormInput) => {\r\n    alert(JSON.stringify(data));\r\n  }; // your form submit function which will invoke after successful validation\r\n\r\n  // console.log(watch()); // you can watch individual input by pass the name of the input\r\n  console.log(\"error\", {...errors});\r\n  \r\n  return (\r\n    <form onSubmit={handleSubmit(onSubmit)}>\r\n      <fieldset>\r\n        <legend>Register</legend>\r\n        <label>First Name:</label>\r\n        <input\r\n          {...register(\"firstName\", {\r\n            required: true,\r\n            maxLength: 20,\r\n            pattern: /^[A-Za-z ]+$/i\r\n          })}\r\n        />\r\n        {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n        {errors?.firstName?.type === \"maxLength\" && (\r\n          <p>Maximum length 20 characters</p>\r\n        )}\r\n        {errors?.firstName?.type === \"pattern\" && (\r\n          <p>Alphabetical characters only</p>\r\n        )}\r\n        \r\n        <label>Last Name:</label>\r\n        <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n        {errors?.lastName?.type === \"pattern\" && (\r\n          <p>Alphabetical characters only</p>\r\n        )}\r\n\r\n        <label>Age:</label>\r\n        <input {...register(\"age\", { \r\n          min: 18,\r\n          max: 99,\r\n          pattern: /[0-9]+/\r\n          })} />\r\n        {errors.age && (\r\n          <p>You Must be older than 18 and younger than 99 years old</p>\r\n        )}\r\n        <input type=\"submit\" />\r\n      </fieldset>\r\n    </form>\r\n  );\r\n}\r\n\r\nexport default App\r\n"
+        }
+    ]
+}

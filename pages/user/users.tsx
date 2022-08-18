@@ -1,33 +1,40 @@
-import _ from 'lodash'
-import { useState } from 'react'
-import {DataGrid,
-        GridActionsCellItem,
-        GridColumns,
-        GridEventListener, 
-        GridPreProcessEditCellProps, 
-        GridRowId,  
-        GridRowModes, 
-        GridRowModesModel, 
-        GridRowParams,  
-        GridToolbarContainer, 
-        MuiEvent } from '@mui/x-data-grid'
-import {Box, 
-        Dialog, 
-        DialogActions, 
-        DialogContent, 
-        DialogContentText, 
-        DialogTitle, 
-        Tooltip, 
-        useTheme} from '@mui/material'
-import Button from '@mui/material/Button'
-import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/DeleteOutlined'
-import SaveIcon from '@mui/icons-material/Save'
-import CancelIcon from '@mui/icons-material/Close'
-import { useAppContext } from '../../context/AppContext'
-import { useRouter } from 'next/router'
-import Typography from '@mui/material/Typography'
-import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined'
+import _ from 'lodash';
+import { useEffect, useState } from 'react';
+import {
+    DataGrid,
+    GridActionsCellItem,
+    GridColumns,
+    GridEventListener,
+    GridPreProcessEditCellProps,
+    GridRowId,
+    GridRowModes,
+    GridRowModesModel,
+    GridRowParams,
+    GridToolbarContainer,
+    MuiEvent,
+} from '@mui/x-data-grid';
+import {
+    Box,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
+    Tooltip,
+    useTheme,
+} from '@mui/material';
+import Button from '@mui/material/Button';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import SaveIcon from '@mui/icons-material/Save';
+import CancelIcon from '@mui/icons-material/Close';
+import { useAppContext } from '../../context/AppContext';
+import { useRouter } from 'next/router';
+import Typography from '@mui/material/Typography';
+import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
+import CheckIcon from '@mui/icons-material/Check';
+// import CancelIcon from '@mui/icons-material/Cancel'
+import { useSnackbar } from 'notistack';
 
 // const useStyles = makeStyles({
 //     headerCell: {
@@ -53,61 +60,73 @@ const initUser = {
     password: 'Abc@1234',
     isNew: true,
     isEdited: true,
-}
+};
 
 function validateTextInput(name: String, props: GridPreProcessEditCellProps) {
-    const regex = /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    const regex =
+        /^(([^<>()[\]\\.,:\s@"]+(\.[^<>()[\]\\.,:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    const nameRegex = /^[a-zA-Z]+([',. -]*[a-zA-Z0-9])*$/
+    const nameRegex = /^[a-zA-Z]+([',. -]*[a-zA-Z0-9])*$/;
     switch (name) {
         case 'firstName':
             return (
                 nameRegex.test(String(props.props.value)) &&
                 nameRegex.test(String(props.otherFieldsProps.lastName.value)) &&
                 regex.test(String(props.otherFieldsProps.email.value))
-            )
+            );
 
         case 'lastName':
             return (
                 nameRegex.test(String(props.otherFieldsProps.firstName.value)) &&
                 nameRegex.test(String(props.props.value)) &&
                 regex.test(String(props.otherFieldsProps.email.value))
-            )
+            );
         case 'email':
             return (
                 nameRegex.test(String(props.otherFieldsProps.firstName.value)) &&
                 nameRegex.test(String(props.otherFieldsProps.lastName.value)) &&
                 regex.test(String(props.props.value))
-            )
+            );
         default:
-            break
+            break;
     }
 }
 
 export default function userPage() {
-    const [users, setUsers, status] = useAppContext()
-    const router = useRouter()
+    const [users, setUsers, status, setStatus, isDisabled, setIsDisabled] = useAppContext();
+    const router = useRouter();
+    const { enqueueSnackbar } = useSnackbar();
 
-    if (status === 'false') {
-        router.push('/user/sign-in')
-    }
+    useEffect(() => {
+        if (status === 'false') {
+            // enqueueSnackbar('You are not signed in.', {variant: 'error'})
+            enqueueSnackbar(
+                <>
+                    <CancelIcon />
+                    <Typography>&nbsp;You are not signed in.</Typography>
+                </>,
+                { variant: 'error' },
+            );
+            router.push('/user/sign-in');
+        }
+    }, [status]);
 
-    const [openDialog, setOpenDialog] = useState(false)
-    const [selectedId, setSelectedId] = useState([])
+    const [openDialog, setOpenDialog] = useState(false);
+    const [selectedId, setSelectedId] = useState([]);
 
-    let isInValid = false
+    let isInValid = false;
 
-    const myTheme  = useTheme()
-    
+    const myTheme = useTheme();
+
     const handleRowEditStart = (params: GridRowParams, event: MuiEvent<React.SyntheticEvent>) => {
-        event.defaultMuiPrevented = true
-    }
+        event.defaultMuiPrevented = true;
+    };
 
     const handleRowEditStop: GridEventListener<'rowEditStop'> = (params, event) => {
-        event.defaultMuiPrevented = true
-    }
+        event.defaultMuiPrevented = true;
+    };
 
-    const [editRowsModel, setEditRowsModel] = useState({})
+    const [editRowsModel, setEditRowsModel] = useState({});
 
     // const handleEditRowsModelChange = useCallback((model: GridEditRowsModel) => {
     //     const updatedModel = { ...model }
@@ -123,100 +142,129 @@ export default function userPage() {
     //     setEditRowsModel(model)
     // }, [])
 
-    const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({})
-    const [isDisableBtn, setIsDisableBtn] = useState(true)
+    const [rowModesModel, setRowModesModel] = useState<GridRowModesModel>({});
+    const [isDisableBtn, setIsDisableBtn] = useState(true);
 
     const handleAddRow = () => {
-        const newId = Date.now()
-        initUser.id = _.cloneDeep(newId)
-        setUsers((prevUsersClone) => [_.cloneDeep(initUser), ...prevUsersClone])
+        const newId = Date.now();
+        initUser.id = _.cloneDeep(newId);
+        setUsers((prevUsersClone) => [_.cloneDeep(initUser), ...prevUsersClone]);
         setRowModesModel((oldModel) => ({
             ...oldModel,
             [newId]: { mode: GridRowModes.Edit, fieldToFocus: 'firstName' },
-        }))
-    }
+        }));
+    };
 
     const handleEditClick = (id: GridRowId) => () => {
-        setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } })
-        setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: true } : e))
-    }
+        setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
+        setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: true } : e)));
+    };
 
     const handleSaveClick = (params: GridRowParams) => () => {
-        const id = params.id
-        setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } })
-        isInValid ? setIsDisableBtn(true) : setIsDisableBtn(false)
-        setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isNew: false } : e))
-    }
+        const id = params.id;
+        setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
+        isInValid ? setIsDisableBtn(true) : setIsDisableBtn(false);
+        // setAlertMessage(params.row?.isNew ? `Add new user successfully!` : `Edit user ${id} successfully!`)
+        enqueueSnackbar(
+            <>
+                <CheckIcon />
+                <Typography>
+                    &nbsp;{params.row?.isNew ? `Add new user successfully!` : `Edit user ${id} successfully!`}
+                </Typography>
+            </>,
+            { variant: 'info' },
+        );
+        setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isNew: false } : e)));
+    };
 
     const handleDeleteClick = (id: GridRowId) => () => {
-        setOpenDialog(true)
-        setSelectedId(prevState => [...prevState, id])
-    }
+        setOpenDialog(true);
+        setSelectedId((prevState) => [...prevState, id]);
+    };
 
     const handleConfirmDelete = () => {
-        setUsers(users.filter((row) => row.id !== selectedId[0]))
-        handleCloseDialog()
-    }
+        setUsers(users.filter((row) => row.id !== selectedId[0]));
+        // enqueueSnackbar(`User ${selectedId[0]} has been deleted!`, { variant: 'info' })
+        enqueueSnackbar(
+            <>
+                <CheckIcon />
+                <Typography>&nbsp;{`User ${selectedId[0]} has been deleted!`}</Typography>
+            </>,
+            { variant: 'info' },
+        );
+        handleCloseDialog();
+    };
 
     const handleCloseDialog = () => {
-        setOpenDialog(false)
-        setSelectedId([])
-    }
+        setOpenDialog(false);
+        setSelectedId([]);
+    };
 
     const handleCancelClick = (id: GridRowId) => () => {
         setRowModesModel({
             ...rowModesModel,
             [id]: { mode: GridRowModes.View, ignoreModifications: true },
-        })
+        });
 
-        const editedRow = users.find((row) => row.id === id)
-        setIsDisableBtn(true)
+        const editedRow = users.find((row) => row.id === id);
+        setIsDisableBtn(true);
         if (editedRow?.isNew) {
-            setUsers(users.filter((row) => row.id !== id))
+            setUsers(users.filter((row) => row.id !== id));
+        } else {
+            setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: false } : e)));
         }
-        else {
-            setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: false } : e))
-        }
-    }
+    };
 
     const processRowUpdate = (newRow) => {
-        const updatedRow = { ...newRow }
-        setUsers(users.map((row) => (row.id === newRow.id ? updatedRow : row)))
+        const updatedRow = { ...newRow };
+        setUsers(users.map((row) => (row.id === newRow.id ? updatedRow : row)));
 
-        return updatedRow
-    }
+        return updatedRow;
+    };
 
     const cols: GridColumns = [
-        { field: 'id', headerName: 'User ID', flex: 1, },
+        { field: 'id', headerName: 'User ID', flex: 1 },
         {
-            field: 'firstName', headerName: 'First name', flex: 1, editable: true,
+            field: 'firstName',
+            headerName: 'First name',
+            flex: 1,
+            editable: true,
             preProcessEditCellProps(params: GridPreProcessEditCellProps) {
-                isInValid = !validateTextInput('firstName', params)
-                const id = params.id
-                isInValid ? setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: true } : e))
-                    : setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: false } : e))
-                return { ...params.props, error: isInValid }
+                isInValid = !validateTextInput('firstName', params);
+                const id = params.id;
+                isInValid
+                    ? setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: true } : e)))
+                    : setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: false } : e)));
+                return { ...params.props, error: isInValid };
             },
         },
         {
-            field: 'lastName', headerName: 'Last name', flex: 1, editable: true,
+            field: 'lastName',
+            headerName: 'Last name',
+            flex: 1,
+            editable: true,
             preProcessEditCellProps(params: GridPreProcessEditCellProps) {
-                isInValid = !validateTextInput('lastName', params)
-                const id = params.id
-                isInValid ? setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: true } : e))
-                    : setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: false } : e))
-                return { ...params.props, error: isInValid }
-            }
+                isInValid = !validateTextInput('lastName', params);
+                const id = params.id;
+                isInValid
+                    ? setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: true } : e)))
+                    : setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: false } : e)));
+                return { ...params.props, error: isInValid };
+            },
         },
         {
-            field: 'email', headerName: 'Email', flex: 1, editable: true,
+            field: 'email',
+            headerName: 'Email',
+            flex: 1,
+            editable: true,
             preProcessEditCellProps(params: GridPreProcessEditCellProps) {
-                isInValid = !validateTextInput('email', params)
-                const id = params.id
-                isInValid ? setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: true } : e))
-                    : setUsers(prevState => prevState.map(e => e.id === id ? { ...e, isEdited: false } : e))
-                return { ...params.props, error: isInValid }
-            }
+                isInValid = !validateTextInput('email', params);
+                const id = params.id;
+                isInValid
+                    ? setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: true } : e)))
+                    : setUsers((prevState) => prevState.map((e) => (e.id === id ? { ...e, isEdited: false } : e)));
+                return { ...params.props, error: isInValid };
+            },
         },
         {
             field: 'actions',
@@ -225,8 +273,8 @@ export default function userPage() {
             width: 100,
             cellClassName: 'actions',
             getActions: (params) => {
-                const id = params.id
-                const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit
+                const id = params.id;
+                const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
                 if (isInEditMode) {
                     return [
                         <Tooltip title="Save">
@@ -249,9 +297,8 @@ export default function userPage() {
                                 color="warning"
                             />
                         </Tooltip>,
-                    ]
-                }
-                else if (!params.row?.isSignIn) {
+                    ];
+                } else if (!params.row?.isSignIn) {
                     return [
                         <Tooltip title="Edit">
                             <GridActionsCellItem
@@ -269,24 +316,27 @@ export default function userPage() {
                                 color="error"
                             />
                         </Tooltip>,
-                    ]
+                    ];
                 }
-                return []
+                return [];
             },
         },
-    ]
+    ];
 
     return (
-        <>{
-            (status === 'false')? (
-                <Typography align='center' color={myTheme.palette.info.main}>
+        <>
+            {status === 'false' ? (
+                <Typography align="center" color={myTheme.palette.info.main}>
                     Loading...
                 </Typography>
             ) : (
                 <>
-                    <Box sx={{
-                        height: 'auto', width: '100%'
-                    }}>
+                    <Box
+                        sx={{
+                            height: 'auto',
+                            width: '100%',
+                        }}
+                    >
                         <DataGrid
                             // onCellEditCommit={handleCommit}
                             autoHeight
@@ -304,24 +354,24 @@ export default function userPage() {
                             onRowEditStart={handleRowEditStart}
                             onRowEditStop={handleRowEditStop}
                             processRowUpdate={processRowUpdate}
-
                             components={{
                                 Toolbar: () => {
-                                    return (<GridToolbarContainer sx={{ justifyContent: 'flex-end' }}>
-                                        <Button 
-                                            startIcon={<PersonAddOutlinedIcon />} 
-                                            onClick={handleAddRow} 
-                                            sx={{textTransform: 'uppercase'}}
-                                        >
-                                            New User
-                                        </Button>
-                                    </GridToolbarContainer>)
-                                }
+                                    return (
+                                        <GridToolbarContainer sx={{ justifyContent: 'flex-end' }}>
+                                            <Button
+                                                startIcon={<PersonAddOutlinedIcon />}
+                                                onClick={handleAddRow}
+                                                sx={{ textTransform: 'uppercase' }}
+                                            >
+                                                New User
+                                            </Button>
+                                        </GridToolbarContainer>
+                                    );
+                                },
                             }}
                             componentsProps={{
                                 toolbar: { setUsers, setRowModesModel },
                             }}
-
                             experimentalFeatures={{ newEditingApi: true }}
                             disableSelectionOnClick
                             sx={{
@@ -344,31 +394,23 @@ export default function userPage() {
                     </Box>
                     <Dialog
                         open={openDialog}
-                    // onClose={handleCloseDialog}
+                        // onClose={handleCloseDialog}
                     >
                         <DialogTitle>Delete</DialogTitle>
                         <DialogContent>
                             <DialogContentText>This operation cannot be undone. Are you sure?</DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                onClick={handleConfirmDelete}
-                            >
+                            <Button variant="outlined" color="primary" onClick={handleConfirmDelete}>
                                 Yes
                             </Button>
-                            <Button
-                                variant="outlined"
-                                color="error"
-                                onClick={handleCloseDialog}
-                            >
+                            <Button variant="outlined" color="error" onClick={handleCloseDialog}>
                                 No
                             </Button>
                         </DialogActions>
                     </Dialog>
                 </>
-            )
-        }</>
-    )
+            )}
+        </>
+    );
 }

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "pages/api/users.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1658133987618,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1658133987618,
+            "name": "Commit-0",
+            "content": "import { users } from '../../data/users';\r\n\r\nexport default function handler(req, res) {\r\n    res.status(200).json(users)\r\n}"
+        }
+    ]
+}

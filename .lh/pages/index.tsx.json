@@ -1,0 +1,230 @@
+{
+    "sourceFile": "pages/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 53,
+            "patches": [
+                {
+                    "date": 1657766021055,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657779696436,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,8 +22,12 @@\n       \n       <button onClick={handleClick}>\n           Place Order\n       </button>\n+      \n+      <button onClick={handleClick}>\n+          Place Order\n+      </button>\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1657785042784,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,13 +22,21 @@\n       \n       <button onClick={handleClick}>\n           Place Order\n       </button>\n-      \n+\n       <button onClick={handleClick}>\n           Place Order\n       </button>\n     </div>\n   )\n }\n \n\\ No newline at end of file\n-export default home\n+export default home\n+\n+home.getLayout = function getLayout(page) {\n+  return (\n+    <Layout>\n+      {page}\n+    </Layout>\n+  )\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657785061029,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import Link from 'next/Link'\n import {useRouter} from 'next/router'\n-\n+import Layout from '../components/layout'\n function home() {\n \n   const router = useRouter()\n \n"
+                },
+                {
+                    "date": 1657790010342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import Link from 'next/Link'\n import {useRouter} from 'next/router'\n-import Layout from '../components/layout'\n+import Layout from '../layout/layout'\n+\n function home() {\n \n   const router = useRouter()\n \n"
+                },
+                {
+                    "date": 1657790826365,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n export default home\n \n home.getLayout = function getLayout(page) {\n   return (\n-    <Layout>\n+    <Layout pageTitle=\"Home Page\">\n       {page}\n     </Layout>\n   )\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657855138559,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n         <a>Product</a>\n       </Link>\n       \n       <button onClick={handleClick}>\n-          Place Order\n+          Register\n       </button>\n \n       <button onClick={handleClick}>\n           Place Order\n"
+                },
+                {
+                    "date": 1657855155938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n \n   const router = useRouter()\n \n   const handleClick = () => {\n-    console.log(\"Place Order\");\n-    router.push('/product')\n+    // console.log(\"Place Order\");\n+    router.push('/user/register')\n   }\n   return (\n     <div>\n       <h1>Home page</h1>\n"
+                },
+                {
+                    "date": 1657855202208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,13 +11,8 @@\n     router.push('/user/register')\n   }\n   return (\n     <div>\n-      <h1>Home page</h1>\n-      <Link href='/blog'>\n-        <a>Blog</a>\n-      </Link>\n-      \n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n       \n"
+                },
+                {
+                    "date": 1657855219788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,8 @@\n       \n       <button onClick={handleClick}>\n           Register\n       </button>\n-\n-      <button onClick={handleClick}>\n-          Place Order\n-      </button>\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1657855287611,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n export default home\n \n home.getLayout = function getLayout(page) {\n   return (\n-    <Layout pageTitle=\"Home Page\">\n+    <Layout pageTitle=\"Home\">\n       {page}\n     </Layout>\n   )\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657881009203,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n       \n-      <button onClick={handleClick}>\n+      <button onClick={handleClick()}>\n           Register\n       </button>\n     </div>\n   )\n"
+                },
+                {
+                    "date": 1657881026431,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n       \n-      <button onClick={handleClick()}>\n+      <button onClick={handleClick}>\n           Register\n       </button>\n     </div>\n   )\n"
+                },
+                {
+                    "date": 1658124227567,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   const router = useRouter()\n \n   const handleClick = () => {\n     // console.log(\"Place Order\");\n-    router.push('/user/register')\n+    router.push('/user/sign-up')\n   }\n   return (\n     <div>\n       <Link href='/product'>\n"
+                },
+                {
+                    "date": 1658195718775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n         <a>Product</a>\n       </Link>\n       \n       <button onClick={handleClick}>\n-          Register\n+          Sign in\n       </button>\n     </div>\n   )\n }\n"
+                },
+                {
+                    "date": 1658390676044,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n function home() {\n \n   const router = useRouter()\n \n-  const handleClick = () => {\n+  const handleClick = (type) => {\n     // console.log(\"Place Order\");\n     router.push('/user/sign-up')\n   }\n   return (\n@@ -15,11 +15,15 @@\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n       \n-      <button onClick={handleClick}>\n+      <button onClick={()=>handleClick(\"sign-in\")}>\n           Sign in\n       </button>\n+      \n+      <button onClick={()=>handleClick(\"sign-up\")}>\n+          Sign up\n+      </button>\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1658390690933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,11 +28,11 @@\n }\n \n export default home\n \n-home.getLayout = function getLayout(page) {\n-  return (\n-    <Layout pageTitle=\"Home\">\n-      {page}\n-    </Layout>\n-  )\n-}\n\\ No newline at end of file\n+// home.getLayout = function getLayout(page) {\n+//   return (\n+//     <Layout pageTitle=\"Home\">\n+//       {page}\n+//     </Layout>\n+//   )\n+// }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658390783795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,17 @@\n   const router = useRouter()\n \n   const handleClick = (type) => {\n     // console.log(\"Place Order\");\n-    router.push('/user/sign-up')\n+    switch(type) {\n+      case \"sign-in\":\n+        router.push('/user/sign-in')\n+        break\n+      case \"sign-up\":\n+        router.push('/user/sign-up')\n+        break\n+    }\n+    \n   }\n   return (\n     <div>\n       <Link href='/product'>\n"
+                },
+                {
+                    "date": 1658390865832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,11 @@\n import {useRouter} from 'next/router'\n import Layout from '../layout/layout'\n \n function home() {\n-\n+  useEffect(() => {\n+    document.title = 'User'\n+  },)\n   const router = useRouter()\n \n   const handleClick = (type) => {\n     // console.log(\"Place Order\");\n"
+                },
+                {
+                    "date": 1658390881523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,14 @@\n import Link from 'next/Link'\n import {useRouter} from 'next/router'\n+import { useEffect } from 'react'\n import Layout from '../layout/layout'\n \n function home() {\n   useEffect(() => {\n     document.title = 'User'\n   },)\n+  \n   const router = useRouter()\n \n   const handleClick = (type) => {\n     // console.log(\"Place Order\");\n"
+                },
+                {
+                    "date": 1658390924569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n import { useEffect } from 'react'\n import Layout from '../layout/layout'\n \n function home() {\n-  useEffect(() => {\n-    document.title = 'User'\n-  },)\n+  (() => {\n+    document.title = 'Home'\n+  })()\n   \n   const router = useRouter()\n \n   const handleClick = (type) => {\n"
+                },
+                {
+                    "date": 1658390953136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \n function home() {\n   (() => {\n     document.title = 'Home'\n-  })()\n+  })();\n   \n   const router = useRouter()\n \n   const handleClick = (type) => {\n"
+                },
+                {
+                    "date": 1658391036421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n import { useEffect } from 'react'\n import Layout from '../layout/layout'\n \n function home() {\n-  (() => {\n+  useEffect(() => {\n     document.title = 'Home'\n-  })();\n+  },)\n   \n   const router = useRouter()\n \n   const handleClick = (type) => {\n"
+                },
+                {
+                    "date": 1658392902008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n import { useEffect } from 'react'\n import Layout from '../layout/layout'\n \n function home() {\n-  useEffect(() => {\n-    document.title = 'Home'\n-  },)\n+  // useEffect(() => {\n+  //   document.title = 'Home'\n+  // },)\n   \n   const router = useRouter()\n \n   const handleClick = (type) => {\n"
+                },
+                {
+                    "date": 1658393019238,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   // useEffect(() => {\n   //   document.title = 'Home'\n   // },)\n   \n-  const router = useRouter()\n+  const path = useRouter()\n \n   const handleClick = (type) => {\n     // console.log(\"Place Order\");\n     switch(type) {\n"
+                },
+                {
+                    "date": 1658393026367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,12 +13,12 @@\n   const handleClick = (type) => {\n     // console.log(\"Place Order\");\n     switch(type) {\n       case \"sign-in\":\n-        router.push('/user/sign-in')\n+        path.push('/user/sign-in')\n         break\n       case \"sign-up\":\n-        router.push('/user/sign-up')\n+        path.push('/user/sign-up')\n         break\n     }\n     \n   }\n"
+                },
+                {
+                    "date": 1658711417245,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,15 +27,15 @@\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n       \n-      <button onClick={()=>handleClick(\"sign-in\")}>\n+      {/* <button onClick={()=>handleClick(\"sign-in\")}>\n           Sign in\n       </button>\n       \n       <button onClick={()=>handleClick(\"sign-up\")}>\n           Sign up\n-      </button>\n+      </button> */}\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1658729408867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,35 +7,13 @@\n   // useEffect(() => {\n   //   document.title = 'Home'\n   // },)\n   \n-  const path = useRouter()\n-\n-  const handleClick = (type) => {\n-    // console.log(\"Place Order\");\n-    switch(type) {\n-      case \"sign-in\":\n-        path.push('/user/sign-in')\n-        break\n-      case \"sign-up\":\n-        path.push('/user/sign-up')\n-        break\n-    }\n-    \n-  }\n   return (\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n-      \n-      {/* <button onClick={()=>handleClick(\"sign-in\")}>\n-          Sign in\n-      </button>\n-      \n-      <button onClick={()=>handleClick(\"sign-up\")}>\n-          Sign up\n-      </button> */}\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1658729414405,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,12 +17,4 @@\n   )\n }\n \n export default home\n-\n-// home.getLayout = function getLayout(page) {\n-//   return (\n-//     <Layout pageTitle=\"Home\">\n-//       {page}\n-//     </Layout>\n-//   )\n-// }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658729420831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,8 @@\n import { useEffect } from 'react'\n import Layout from '../layout/layout'\n \n function home() {\n-  // useEffect(() => {\n-  //   document.title = 'Home'\n-  // },)\n-  \n   return (\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n"
+                },
+                {
+                    "date": 1658744325857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,15 @@\n import Link from 'next/Link'\n-import {useRouter} from 'next/router'\n-import { useEffect } from 'react'\n+import router from 'next/router'\n+import { useEffect, useContext } from 'react';\n+import { useAppContext } from '../context/AppContext';\n import Layout from '../layout/layout'\n \n function home() {\n+  const [status] = useAppContext()\n+  if (status === 'true') {\n+    router.push('/')\n+  }\n   return (\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n"
+                },
+                {
+                    "date": 1658744546104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,20 +2,30 @@\n import router from 'next/router'\n import { useEffect, useContext } from 'react';\n import { useAppContext } from '../context/AppContext';\n import Layout from '../layout/layout'\n+import Grid from '@mui/material/Grid';\n \n function home() {\n   const [status] = useAppContext()\n   if (status === 'true') {\n     router.push('/')\n   }\n   return (\n-    <div>\n-      <Link href='/product'>\n-        <a>Product</a>\n-      </Link>\n-    </div>\n+    // <div>\n+    //   <Link onClick={() => {router.push('/user/sign-in')}} variant=\"body2\">\n+    //     <a>Product</a>\n+    //   </Link>\n+    // </div>\n+    <>\n+      <Grid container justifyContent=\"flex-end\">\n+        <Grid item>\n+          <Link onClick={() => { router.push('/user/sign-in') }} variant=\"body2\">\n+            Already have an account? Sign in\n+          </Link>\n+        </Grid>\n+      </Grid>\n+    </>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1658744588625,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,30 +2,20 @@\n import router from 'next/router'\n import { useEffect, useContext } from 'react';\n import { useAppContext } from '../context/AppContext';\n import Layout from '../layout/layout'\n-import Grid from '@mui/material/Grid';\n \n function home() {\n   const [status] = useAppContext()\n   if (status === 'true') {\n     router.push('/')\n   }\n   return (\n-    // <div>\n-    //   <Link onClick={() => {router.push('/user/sign-in')}} variant=\"body2\">\n-    //     <a>Product</a>\n-    //   </Link>\n-    // </div>\n-    <>\n-      <Grid container justifyContent=\"flex-end\">\n-        <Grid item>\n-          <Link onClick={() => { router.push('/user/sign-in') }} variant=\"body2\">\n-            Already have an account? Sign in\n-          </Link>\n-        </Grid>\n-      </Grid>\n-    </>\n+    <div>\n+      <Link href='/product'>\n+        <a>Product</a>\n+      </Link>\n+    </div>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1658886477811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n function home() {\n   const [status] = useAppContext()\n   if (status === 'true') {\n-    router.push('/')\n+    // router.push('/')\n   }\n   return (\n     <div>\n       <Link href='/product'>\n"
+                },
+                {
+                    "date": 1658886910921,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,8 +13,11 @@\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n+      <Link onClick={() => {router.push('/user')}} component='button'>\n+        User\n+      </Link>\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1658886925074,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n-      <Link onClick={() => {router.push('/user')}} component='button'>\n+      <Link onClick={() => { router.push('/user'); } } href={''}>\n         User\n       </Link>\n     </div>\n   )\n"
+                },
+                {
+                    "date": 1658887109687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,11 +13,8 @@\n     <div>\n       <Link href='/product'>\n         <a>Product</a>\n       </Link>\n-      <Link onClick={() => { router.push('/user'); } } href={''}>\n-        User\n-      </Link>\n     </div>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1659429919819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n \n function home() {\n   const [status] = useAppContext()\n   if (status === 'true') {\n-    // router.push('/')\n+    router.push('/')\n   }\n   return (\n     <div>\n       <Link href='/product'>\n"
+                },
+                {
+                    "date": 1659499385561,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import Link from 'next/Link'\n import router from 'next/router'\n-import { useEffect, useContext } from 'react';\n-import { useAppContext } from '../context/AppContext';\n+import { useEffect, useContext } from 'react'\n+import { useAppContext } from '../context/AppContext'\n import Layout from '../layout/layout'\n \n function home() {\n   const [status] = useAppContext()\n"
+                },
+                {
+                    "date": 1659499497534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,7 @@\n import Link from 'next/Link'\n import router from 'next/router'\n-import { useEffect, useContext } from 'react'\n import { useAppContext } from '../context/AppContext'\n-import Layout from '../layout/layout'\n \n function home() {\n   const [status] = useAppContext()\n   if (status === 'true') {\n"
+                },
+                {
+                    "date": 1659508187645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import { Grid } from '@mui/material'\n import Link from 'next/Link'\n import router from 'next/router'\n import { useAppContext } from '../context/AppContext'\n \n@@ -7,13 +8,15 @@\n   if (status === 'true') {\n     router.push('/')\n   }\n   return (\n-    <div>\n-      <Link href='/product'>\n-        <a>Product</a>\n-      </Link>\n-    </div>\n+    <Grid container justifyContent=\"flex-end\" sx={{ mt: 2 }}>\n+      <Grid item>\n+        <Link onClick={router.push('/product')} type=\"button\" variant=\"body2\" underline=\"hover\">\n+          {\"Product\"}\n+        </Link>\n+      </Grid>\n+    </Grid>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1659508473623,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,10 +10,12 @@\n   }\n   return (\n     <Grid container justifyContent=\"flex-end\" sx={{ mt: 2 }}>\n       <Grid item>\n-        <Link onClick={router.push('/product')} type=\"button\" variant=\"body2\" underline=\"hover\">\n-          {\"Product\"}\n+        <Link href={''}>\n+          <a>\n+            \"Product\"\n+          </a>\n         </Link>\n       </Grid>\n     </Grid>\n   )\n"
+                },
+                {
+                    "date": 1659508486457,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n   }\n   return (\n     <Grid container justifyContent=\"flex-end\" sx={{ mt: 2 }}>\n       <Grid item>\n-        <Link href={''}>\n+        <Link href={'#'}>\n           <a>\n             \"Product\"\n           </a>\n         </Link>\n"
+                },
+                {
+                    "date": 1659508943165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,11 @@\n   if (status === 'true') {\n     router.push('/')\n   }\n   return (\n-    <Grid container justifyContent=\"flex-end\" sx={{ mt: 2 }}>\n+    <Grid >\n       <Grid item>\n-        <Link href={'#'}>\n+        <Link href={'/product'}>\n           <a>\n             \"Product\"\n           </a>\n         </Link>\n"
+                },
+                {
+                    "date": 1659508978650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     <Grid >\n       <Grid item>\n         <Link href={'/product'}>\n           <a>\n-            \"Product\"\n+            Product\n           </a>\n         </Link>\n       </Grid>\n     </Grid>\n"
+                },
+                {
+                    "date": 1659509038135,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,15 +9,9 @@\n     router.push('/')\n   }\n   return (\n     <Grid >\n-      <Grid item>\n-        <Link href={'/product'}>\n-          <a>\n-            Product\n-          </a>\n-        </Link>\n-      </Grid>\n+      Home Page\n     </Grid>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1659519550866,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,11 +8,9 @@\n   if (status === 'true') {\n     router.push('/')\n   }\n   return (\n-    <Grid >\n-      Home Page\n-    </Grid>\n+    <h1>Home Page</h1>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1659519608518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import { Grid } from '@mui/material'\n-import Link from 'next/Link'\n import router from 'next/router'\n import { useAppContext } from '../context/AppContext'\n \n function home() {\n"
+                },
+                {
+                    "date": 1659521417595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,11 +2,11 @@\n import { useAppContext } from '../context/AppContext'\n \n function home() {\n   const [status] = useAppContext()\n-  if (status === 'true') {\n-    router.push('/')\n-  }\n+  // if (status === 'true') {\n+  //   router.push('/')\n+  // }\n   return (\n     <h1>Home Page</h1>\n   )\n }\n"
+                },
+                {
+                    "date": 1660632546360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import Head from 'next/head'\n import router from 'next/router'\n import { useAppContext } from '../context/AppContext'\n \n function home() {\n@@ -6,9 +7,16 @@\n   // if (status === 'true') {\n   //   router.push('/')\n   // }\n   return (\n-    <h1>Home Page</h1>\n+    <>\n+      <Head>\n+        <title>\n+          {'Home'}\n+        </title>\n+      </Head>\n+      <h1>Home Page</h1>\n+    </>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1660632654271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,13 +8,13 @@\n   //   router.push('/')\n   // }\n   return (\n     <>\n-      <Head>\n+      {/* <Head>\n         <title>\n           {'Home'}\n         </title>\n-      </Head>\n+      </Head> */}\n       <h1>Home Page</h1>\n     </>\n   )\n }\n"
+                },
+                {
+                    "date": 1660632692083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,22 +1,13 @@\n-import Head from 'next/head'\n-import router from 'next/router'\n import { useAppContext } from '../context/AppContext'\n \n function home() {\n   const [status] = useAppContext()\n   // if (status === 'true') {\n   //   router.push('/')\n   // }\n   return (\n-    <>\n-      {/* <Head>\n-        <title>\n-          {'Home'}\n-        </title>\n-      </Head> */}\n-      <h1>Home Page</h1>\n-    </>\n+    <h1>Home Page</h1>\n   )\n }\n \n export default home\n"
+                },
+                {
+                    "date": 1660634737482,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,17 @@\n+import { useEffect } from 'react'\n import { useAppContext } from '../context/AppContext'\n \n function home() {\n-  const [status] = useAppContext()\n+  const [status, setStatus] = useAppContext()\n   // if (status === 'true') {\n   //   router.push('/')\n   // }\n+  useEffect(() => {\n+    // Perform localStorage action\n+    localStorage.setItem('status', 'false')\n+    setStatus(localStorage.getItem('status'))\n+  }, [])\n   return (\n     <h1>Home Page</h1>\n   )\n }\n"
+                },
+                {
+                    "date": 1660634798072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,13 +5,8 @@\n   const [status, setStatus] = useAppContext()\n   // if (status === 'true') {\n   //   router.push('/')\n   // }\n-  useEffect(() => {\n-    // Perform localStorage action\n-    localStorage.setItem('status', 'false')\n-    setStatus(localStorage.getItem('status'))\n-  }, [])\n   return (\n     <h1>Home Page</h1>\n   )\n }\n"
+                }
+            ],
+            "date": 1657766021055,
+            "name": "Commit-0",
+            "content": "import Link from 'next/Link'\nimport {useRouter} from 'next/router'\n\nfunction home() {\n\n  const router = useRouter()\n\n  const handleClick = () => {\n    console.log(\"Place Order\");\n    router.push('/product')\n  }\n  return (\n    <div>\n      <h1>Home page</h1>\n      <Link href='/blog'>\n        <a>Blog</a>\n      </Link>\n      \n      <Link href='/product'>\n        <a>Product</a>\n      </Link>\n      \n      <button onClick={handleClick}>\n          Place Order\n      </button>\n    </div>\n  )\n}\n\nexport default home"
+        }
+    ]
+}

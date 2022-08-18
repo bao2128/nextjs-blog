@@ -1,0 +1,18 @@
+{
+    "sourceFile": "pages/product/shoe.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1657596757936,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1657596757936,
+            "name": "Commit-0",
+            "content": "function shoe() {\r\n    return <h1>shoe</h1>\r\n}\r\n\r\nexport default shoe"
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+{
+    "sourceFile": "test_dev/test_program.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 16,
+            "patches": [
+                {
+                    "date": 1660526280196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1660529706721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,26 @@\n-const points = [4, 100, 1, 500, 25, 10]\r\n-points.sort(function(a, b){return b - a})\r\n-console.log(points)\r\n-let tmp = []\r\n-console.log(tmp, typeof(tmp))\n\\ No newline at end of file\n+// const points = [4, 100, 1, 500, 25, 10]\r\n+// points.sort(function(a, b){return b - a})\r\n+// console.log(points)\r\n+// let tmp = []\r\n+// console.log(tmp, typeof(tmp))\r\n+\r\n+const { type } = require(\"os\");\r\n+\r\n+// console.log('tmp');\r\n+const fooString1 = new String(\"foo\");\r\n+const fooString2 = new String(\"foo\");\r\n+\r\n+// Evaluates to false\r\n+const tmp = (fooString1 == fooString2);\r\n+console.log(typeof(tmp))\r\n+//\r\n+\r\n+var obj = {\r\n+    hello: \"World\",\r\n+    sayHello: (function() {\r\n+        console.log(\"I say Hello!\");\r\n+    }).toString()\r\n+};\r\n+var myobj = JSON.parse(JSON.stringify(obj));\r\n+myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n+myobj.sayHello();\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660533834857,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,6 +21,6 @@\n         console.log(\"I say Hello!\");\r\n     }).toString()\r\n };\r\n var myobj = JSON.parse(JSON.stringify(obj));\r\n-myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n-myobj.sayHello();\n\\ No newline at end of file\n+myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")(); \r\n+myobj.sayHello();\r\n"
+                },
+                {
+                    "date": 1660533942144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,26 +1,26 @@\n-// const points = [4, 100, 1, 500, 25, 10]\r\n-// points.sort(function(a, b){return b - a})\r\n-// console.log(points)\r\n-// let tmp = []\r\n-// console.log(tmp, typeof(tmp))\r\n+const points = [4, 100, 1, 500, 25, 10]\r\n+points.sort(function(a, b){return b - a})\r\n+console.log(points)\r\n+let tmp = []\r\n+console.log(tmp, typeof(tmp))\r\n \r\n-const { type } = require(\"os\");\r\n+// const { type } = require(\"os\");\r\n \r\n-// console.log('tmp');\r\n-const fooString1 = new String(\"foo\");\r\n-const fooString2 = new String(\"foo\");\r\n+// // console.log('tmp');\r\n+// const fooString1 = new String(\"foo\");\r\n+// const fooString2 = new String(\"foo\");\r\n \r\n-// Evaluates to false\r\n-const tmp = (fooString1 == fooString2);\r\n-console.log(typeof(tmp))\r\n-//\r\n+// // Evaluates to false\r\n+// const tmp = (fooString1 == fooString2);\r\n+// console.log(typeof(tmp))\r\n+// //\r\n \r\n-var obj = {\r\n-    hello: \"World\",\r\n-    sayHello: (function() {\r\n-        console.log(\"I say Hello!\");\r\n-    }).toString()\r\n-};\r\n-var myobj = JSON.parse(JSON.stringify(obj));\r\n-myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")(); \r\n-myobj.sayHello();\r\n+// var obj = {\r\n+//     hello: \"World\",\r\n+//     sayHello: (function() {\r\n+//         console.log(\"I say Hello!\");\r\n+//     }).toString()\r\n+// };\r\n+// var myobj = JSON.parse(JSON.stringify(obj));\r\n+// myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")(); \r\n+// myobj.sayHello();\r\n"
+                },
+                {
+                    "date": 1660534317929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,8 @@\n points.sort(function(a, b){return b - a})\r\n console.log(points)\r\n let tmp = []\r\n console.log(tmp, typeof(tmp))\r\n-\r\n // const { type } = require(\"os\");\r\n \r\n // // console.log('tmp');\r\n // const fooString1 = new String(\"foo\");\r\n"
+                },
+                {
+                    "date": 1660534878229,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n const points = [4, 100, 1, 500, 25, 10]\r\n-points.sort(function(a, b){return b - a})\r\n+points.sort(function (a, b) { return b - a })\r\n console.log(points)\r\n let tmp = []\r\n-console.log(tmp, typeof(tmp))\r\n+\r\n+\r\n+console.log(tmp, typeof (tmp))\r\n // const { type } = require(\"os\");\r\n \r\n // // console.log('tmp');\r\n // const fooString1 = new String(\"foo\");\r\n@@ -20,6 +22,6 @@\n //         console.log(\"I say Hello!\");\r\n //     }).toString()\r\n // };\r\n // var myobj = JSON.parse(JSON.stringify(obj));\r\n-// myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")(); \r\n+// myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n // myobj.sayHello();\r\n"
+                },
+                {
+                    "date": 1660550406869,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,27 +1,24 @@\n-const points = [4, 100, 1, 500, 25, 10]\r\n-points.sort(function (a, b) { return b - a })\r\n-console.log(points)\r\n-let tmp = []\r\n-\r\n-\r\n-console.log(tmp, typeof (tmp))\r\n-// const { type } = require(\"os\");\r\n-\r\n+// const points = [4, 100, 1, 500, 25, 10]\r\n+// points.sort(function (a, b) { return b - a })\r\n+// console.log(points)\r\n+// let tmp = []\r\n+// console.log(tmp, typeof (tmp))\r\n // // console.log('tmp');\r\n+//\r\n // const fooString1 = new String(\"foo\");\r\n // const fooString2 = new String(\"foo\");\r\n \r\n // // Evaluates to false\r\n // const tmp = (fooString1 == fooString2);\r\n // console.log(typeof(tmp))\r\n // //\r\n \r\n-// var obj = {\r\n-//     hello: \"World\",\r\n-//     sayHello: (function() {\r\n-//         console.log(\"I say Hello!\");\r\n-//     }).toString()\r\n-// };\r\n-// var myobj = JSON.parse(JSON.stringify(obj));\r\n-// myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n-// myobj.sayHello();\r\n+var obj = {\r\n+    hello: \"World\",\r\n+    sayHello: (function() {\r\n+        console.log(\"I say Hello!\");\r\n+    }).toString()\r\n+};\r\n+var myobj = JSON.parse(JSON.stringify(obj));\r\n+myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n+myobj.sayHello();\r\n"
+                },
+                {
+                    "date": 1660643143542,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,4 +21,7 @@\n };\r\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n+\r\n+let tmpStr = ''\r\n+console.log(!!tmpStr)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643154312,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ''\r\n+let tmpStr = ' '\r\n console.log(!!tmpStr)\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643173476,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,5 +23,5 @@\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n let tmpStr = ' '\r\n-console.log(!!tmpStr)\n\\ No newline at end of file\n+console.log(!!tmpStr.strim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643181754,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,5 +23,5 @@\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n let tmpStr = ' '\r\n-console.log(!!tmpStr.strim())\n\\ No newline at end of file\n+console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643193332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ' '\r\n+let tmpStr = 'a'\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643253261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = 'a'\r\n+let tmpStr = ' '\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643264934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ' '\r\n+let tmpStr = ''\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643302677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ''\r\n+let tmpStr = ' '\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643311098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ' '\r\n+let tmpStr = ' a '\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660643316672,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,6 +22,6 @@\n var myobj = JSON.parse(JSON.stringify(obj));\r\n myobj.sayHello = new Function(\"return (\"+myobj.sayHello+\")\")();\r\n myobj.sayHello();\r\n \r\n-let tmpStr = ' a '\r\n+let tmpStr = '    '\r\n console.log(!!tmpStr.trim())\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1660526280196,
+            "name": "Commit-0",
+            "content": "const points = [4, 100, 1, 500, 25, 10]\r\npoints.sort(function(a, b){return b - a})\r\nconsole.log(points)\r\nlet tmp = []\r\nconsole.log(tmp, typeof(tmp))"
+        }
+    ]
+}

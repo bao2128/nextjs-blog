@@ -1,0 +1,74 @@
+{
+    "sourceFile": "pages/about.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 14,
+            "patches": [
+                {
+                    "date": 1657784031536,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657784057342,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,8 @@\n \r\n about.getLayout = function getLayout(page) {\r\n     return (\r\n       <Layout>\r\n-        <Sidebar />\r\n         {page}\r\n       </Layout>\r\n     )\r\n   }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657784066345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout'\r\n+import Layout from '../components/layout.tsx'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657784283822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout.tsx'\r\n+import Layout from '../components/layout'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657784332410,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout'\r\n+import Layout from '../components/layout.js'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657784465931,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout.js'\r\n+import Layout from '../components/layout.tsx'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657784738434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout.tsx'\r\n+import Layout from '../components/layourt\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657784754124,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layourt\r\n+import Layout from '../components/layout'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657785735058,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n       <Layout>\r\n         {page}\r\n       </Layout>\r\n     )\r\n-  }\n\\ No newline at end of file\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657790685215,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import Layout from '../components/layout'\r\n+import Layout from '../layout/layout'\r\n \r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n"
+                },
+                {
+                    "date": 1657790762633,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n export default about\r\n \r\n about.getLayout = function getLayout(page) {\r\n     return (\r\n-      <Layout>\r\n+      <Layout pageTitle={About}>\r\n         {page}\r\n       </Layout>\r\n     )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1657790768200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n export default about\r\n \r\n about.getLayout = function getLayout(page) {\r\n     return (\r\n-      <Layout pageTitle={About}>\r\n+      <Layout pageTitle={'About'}>\r\n         {page}\r\n       </Layout>\r\n     )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1659507793084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n export default about\r\n \r\n about.getLayout = function getLayout(page) {\r\n     return (\r\n-      <Layout pageTitle={'About'}>\r\n+      <Layout>\r\n         {page}\r\n       </Layout>\r\n     )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1659507800310,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,4 @@\n     return <h1>About Page</h1>\r\n }\r\n \r\n export default about\r\n-\r\n-about.getLayout = function getLayout(page) {\r\n-    return (\r\n-      <Layout>\r\n-        {page}\r\n-      </Layout>\r\n-    )\r\n-}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1659519516663,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,4 @@\n-import Layout from '../layout/layout'\r\n-\r\n function about() {\r\n     return <h1>About Page</h1>\r\n }\r\n \r\n"
+                }
+            ],
+            "date": 1657784031536,
+            "name": "Commit-0",
+            "content": "import Layout from '../components/layout'\r\n\r\nfunction about() {\r\n    return <h1>About Page</h1>\r\n}\r\n\r\nexport default about\r\n\r\nabout.getLayout = function getLayout(page) {\r\n    return (\r\n      <Layout>\r\n        <Sidebar />\r\n        {page}\r\n      </Layout>\r\n    )\r\n  }"
+        }
+    ]
+}

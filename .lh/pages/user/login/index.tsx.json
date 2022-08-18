@@ -1,0 +1,114 @@
+{
+    "sourceFile": "pages/user/login/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 24,
+            "patches": [
+                {
+                    "date": 1657765864083,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657766023518,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import ReactDOM from \"react-dom\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"./styles.css\";\r\n+// import \"./styles.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                },
+                {
+                    "date": 1657766604161,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n import * as React from \"react\";\r\n-import ReactDOM from \"react-dom\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n // import \"./styles.css\";\r\n \r\n@@ -22,9 +21,9 @@\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n-  console.log(watch(\"example\")); // you can watch individual input by pass the name of the input\r\n+  // console.log(watch(\"example\")); // you can watch individual input by pass the name of the input\r\n \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <label>First Name</label>\r\n"
+                },
+                {
+                    "date": 1657766749371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n-  // console.log(watch(\"example\")); // you can watch individual input by pass the name of the input\r\n+  console.log(watch(\"firstName\")); // you can watch individual input by pass the name of the input\r\n \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <label>First Name</label>\r\n"
+                },
+                {
+                    "date": 1657766806232,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n-  console.log(watch(\"firstName\")); // you can watch individual input by pass the name of the input\r\n+  console.log(watch()); // you can watch individual input by pass the name of the input\r\n \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <label>First Name</label>\r\n"
+                },
+                {
+                    "date": 1657768330348,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,8 +25,9 @@\n   console.log(watch()); // you can watch individual input by pass the name of the input\r\n \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n+      <fieldset>\r\n       <label>First Name</label>\r\n       <input\r\n         {...register(\"firstName\", {\r\n           required: true,\r\n@@ -51,8 +52,9 @@\n       {errors.age && (\r\n         <p>You Must be older then 18 and younger then 99 years old</p>\r\n       )}\r\n       <input type=\"submit\" />\r\n+      </fieldset>\r\n     </form>\r\n   );\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1657768353210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,34 +26,35 @@\n \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <fieldset>\r\n-      <label>First Name</label>\r\n-      <input\r\n-        {...register(\"firstName\", {\r\n-          required: true,\r\n-          maxLength: 20,\r\n-          pattern: /^[A-Za-z]+$/i\r\n-        })}\r\n-      />\r\n-      {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n-      {errors?.firstName?.type === \"maxLength\" && (\r\n-        <p>First name cannot exceed 20 characters</p>\r\n-      )}\r\n-      {errors?.firstName?.type === \"pattern\" && (\r\n-        <p>Alphabetical characters only</p>\r\n-      )}\r\n-      <label>Laste Name</label>\r\n-      <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n-      {errors?.lastName?.type === \"pattern\" && (\r\n-        <p>Alphabetical characters only</p>\r\n-      )}\r\n-      <label>Age</label>a\r\n-      <input {...register(\"age\", { min: 18, max: 99 })} />\r\n-      {errors.age && (\r\n-        <p>You Must be older then 18 and younger then 99 years old</p>\r\n-      )}\r\n-      <input type=\"submit\" />\r\n+        <legend>Register</legend>\r\n+        <label>First Name</label>\r\n+        <input\r\n+          {...register(\"firstName\", {\r\n+            required: true,\r\n+            maxLength: 20,\r\n+            pattern: /^[A-Za-z]+$/i\r\n+          })}\r\n+        />\r\n+        {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n+        {errors?.firstName?.type === \"maxLength\" && (\r\n+          <p>First name cannot exceed 20 characters</p>\r\n+        )}\r\n+        {errors?.firstName?.type === \"pattern\" && (\r\n+          <p>Alphabetical characters only</p>\r\n+        )}\r\n+        <label>Laste Name</label>\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n+        {errors?.lastName?.type === \"pattern\" && (\r\n+          <p>Alphabetical characters only</p>\r\n+        )}\r\n+        <label>Age</label>a\r\n+        <input {...register(\"age\", { min: 18, max: 99 })} />\r\n+        {errors.age && (\r\n+          <p>You Must be older then 18 and younger then 99 years old</p>\r\n+        )}\r\n+        <input type=\"submit\" />\r\n       </fieldset>\r\n     </form>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1657768589162,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -47,9 +47,9 @@\n         <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n-        <label>Age</label>a\r\n+        <label>Age</label>\r\n         <input {...register(\"age\", { min: 18, max: 99 })} />\r\n         {errors.age && (\r\n           <p>You Must be older then 18 and younger then 99 years old</p>\r\n         )}\r\n"
+                },
+                {
+                    "date": 1657768721467,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,9 @@\n         )}\r\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n-        <label>Laste Name</label>\r\n+        <label>Last Name</label>\r\n         <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n"
+                },
+                {
+                    "date": 1657768743332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,9 +27,9 @@\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <fieldset>\r\n         <legend>Register</legend>\r\n-        <label>First Name</label>\r\n+        <label>First Name:</label>\r\n         <input\r\n           {...register(\"firstName\", {\r\n             required: true,\r\n             maxLength: 20,\r\n@@ -42,14 +42,14 @@\n         )}\r\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n-        <label>Last Name</label>\r\n+        <label>Last Name:</label>\r\n         <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n-        <label>Age</label>\r\n+        <label>Age:</label>\r\n         <input {...register(\"age\", { min: 18, max: 99 })} />\r\n         {errors.age && (\r\n           <p>You Must be older then 18 and younger then 99 years old</p>\r\n         )}\r\n"
+                },
+                {
+                    "date": 1657769898845,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,9 +32,9 @@\n         <input\r\n           {...register(\"firstName\", {\r\n             required: true,\r\n             maxLength: 20,\r\n-            pattern: /^[A-Za-z]+$/i\r\n+            pattern: /^[A-Za-z ]+$/i\r\n           })}\r\n         />\r\n         {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n         {errors?.firstName?.type === \"maxLength\" && (\r\n"
+                },
+                {
+                    "date": 1657769935151,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770056251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z ][A-Za-z]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770092819,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z ][A-Za-z]+$/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+[A-Za-z]$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770116842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+[A-Za-z]$/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770179039,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+$/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+[A-Za-z]/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770246821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,9 +43,9 @@\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Last Name:</label>\r\n-        <input {...register(\"lastName\", { pattern: /^[A-Za-z ]+[A-Za-z]/i })} />\r\n+        <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n"
+                },
+                {
+                    "date": 1657770451721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n             maxLength: 20,\r\n             pattern: /^[A-Za-z ]+$/i\r\n           })}\r\n         />\r\n-        {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n+        {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n         {errors?.firstName?.type === \"maxLength\" && (\r\n           <p>First name cannot exceed 20 characters</p>\r\n         )}\r\n         {errors?.firstName?.type === \"pattern\" && (\r\n"
+                },
+                {
+                    "date": 1657770486043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -37,9 +37,9 @@\n           })}\r\n         />\r\n         {errors?.firstName?.type === \"required\" && <p>This field cannot be empty</p>}\r\n         {errors?.firstName?.type === \"maxLength\" && (\r\n-          <p>First name cannot exceed 20 characters</p>\r\n+          <p>Maximum length 20 characters</p>\r\n         )}\r\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n"
+                },
+                {
+                    "date": 1657770577684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,9 +50,9 @@\n         )}\r\n         <label>Age:</label>\r\n         <input {...register(\"age\", { min: 18, max: 99 })} />\r\n         {errors.age && (\r\n-          <p>You Must be older then 18 and younger then 99 years old</p>\r\n+          <p>You Must be older than 18 and younger than 99 years old</p>\r\n         )}\r\n         <input type=\"submit\" />\r\n       </fieldset>\r\n     </form>\r\n"
+                },
+                {
+                    "date": 1657770694535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,13 @@\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n         <label>Age:</label>\r\n-        <input {...register(\"age\", { min: 18, max: 99 })} />\r\n+        <input {...register(\"age\", { \r\n+          min: 18,\r\n+          max: 99,\r\n+          pattern: /[0-9]+/\r\n+          })} />\r\n         {errors.age && (\r\n           <p>You Must be older than 18 and younger than 99 years old</p>\r\n         )}\r\n         <input type=\"submit\" />\r\n"
+                },
+                {
+                    "date": 1657772492717,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,10 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   console.log(watch()); // you can watch individual input by pass the name of the input\r\n-\r\n+  console.log(\"error\", {errors});\r\n+  \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <fieldset>\r\n         <legend>Register</legend>\r\n"
+                },
+                {
+                    "date": 1657772603522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,9 +21,9 @@\n   const onSubmit = (data: IFormInput) => {\r\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n-  console.log(watch()); // you can watch individual input by pass the name of the input\r\n+  // console.log(watch()); // you can watch individual input by pass the name of the input\r\n   console.log(\"error\", {errors});\r\n   \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n"
+                },
+                {
+                    "date": 1657772871721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n     alert(JSON.stringify(data));\r\n   }; // your form submit function which will invoke after successful validation\r\n \r\n   // console.log(watch()); // you can watch individual input by pass the name of the input\r\n-  console.log(\"error\", {errors});\r\n+  console.log(\"error\", {...errors});\r\n   \r\n   return (\r\n     <form onSubmit={handleSubmit(onSubmit)}>\r\n       <fieldset>\r\n"
+                },
+                {
+                    "date": 1657772925400,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -43,13 +43,15 @@\n         )}\r\n         {errors?.firstName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n+        \r\n         <label>Last Name:</label>\r\n         <input {...register(\"lastName\", { pattern: /^[A-Za-z]+/i })} />\r\n         {errors?.lastName?.type === \"pattern\" && (\r\n           <p>Alphabetical characters only</p>\r\n         )}\r\n+\r\n         <label>Age:</label>\r\n         <input {...register(\"age\", { \r\n           min: 18,\r\n           max: 99,\r\n"
+                }
+            ],
+            "date": 1657765864083,
+            "name": "Commit-0",
+            "content": "import * as React from \"react\";\r\nimport ReactDOM from \"react-dom\";\r\nimport { useForm } from \"react-hook-form\";\r\n\r\nimport \"./styles.css\";\r\n\r\ninterface IFormInput {\r\n  firstName: string;\r\n  lastName: string;\r\n  age: number;\r\n  example: string;\r\n}\r\n\r\nfunction App() {\r\n  const {\r\n    register,\r\n    handleSubmit,\r\n    watch,\r\n    formState: { errors }\r\n  } = useForm<IFormInput>();\r\n\r\n  const onSubmit = (data: IFormInput) => {\r\n    alert(JSON.stringify(data));\r\n  }; // your form submit function which will invoke after successful validation\r\n\r\n  console.log(watch(\"example\")); // you can watch individual input by pass the name of the input\r\n\r\n  return (\r\n    <form onSubmit={handleSubmit(onSubmit)}>\r\n      <label>First Name</label>\r\n      <input\r\n        {...register(\"firstName\", {\r\n          required: true,\r\n          maxLength: 20,\r\n          pattern: /^[A-Za-z]+$/i\r\n        })}\r\n      />\r\n      {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n      {errors?.firstName?.type === \"maxLength\" && (\r\n        <p>First name cannot exceed 20 characters</p>\r\n      )}\r\n      {errors?.firstName?.type === \"pattern\" && (\r\n        <p>Alphabetical characters only</p>\r\n      )}\r\n      <label>Laste Name</label>\r\n      <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n      {errors?.lastName?.type === \"pattern\" && (\r\n        <p>Alphabetical characters only</p>\r\n      )}\r\n      <label>Age</label>a\r\n      <input {...register(\"age\", { min: 18, max: 99 })} />\r\n      {errors.age && (\r\n        <p>You Must be older then 18 and younger then 99 years old</p>\r\n      )}\r\n      <input type=\"submit\" />\r\n    </form>\r\n  );\r\n}\r\n\r\nexport default App\r\n"
+        }
+    ]
+}

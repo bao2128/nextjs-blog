@@ -1,0 +1,22 @@
+{
+    "sourceFile": "pages/404.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1657611899317,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657611912895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,3 +1,5 @@\n function PageNotFound() {\r\n     return <h1>ERROR 404: Page Not Found</h1>\r\n-}\n\\ No newline at end of file\n+}\r\n+\r\n+export default PageNotFound\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1657611899317,
+            "name": "Commit-0",
+            "content": "function PageNotFound() {\r\n    return <h1>ERROR 404: Page Not Found</h1>\r\n}"
+        }
+    ]
+}

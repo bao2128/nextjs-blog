@@ -1,0 +1,126 @@
+{
+    "sourceFile": "pages/_app.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 27,
+            "patches": [
+                {
+                    "date": 1657791854870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657791864632,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n-import '../components/register.module.css';\r\n+// import '../components/register.module.css';\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n"
+                },
+                {
+                    "date": 1657857492239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n // import '../components/register.module.css';\r\n \r\n+//run json-server first: json-server --watch data.json\r\n+\r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n   \r\n"
+                },
+                {
+                    "date": 1657859199034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n // import '../components/register.module.css';\r\n \r\n-//run json-server first: json-server --watch data.json\r\n+//run json-server first: json-server --watch data.json --port 4000\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n     // Use the layout defined at the page level, if available\r\n     const getLayout = Component.getLayout || ((page) => page)\r\n"
+                },
+                {
+                    "date": 1658218257026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,17 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n // import '../components/register.module.css';\r\n+import { AppWrapper } from '../context/AppContext'\r\n \r\n //run json-server first: json-server --watch data.json --port 4000\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n-    // Use the layout defined at the page level, if available\r\n-    const getLayout = Component.getLayout || ((page) => page)\r\n-  \r\n-    return getLayout(<Component {...pageProps} />)\r\n-  }\r\n\\ No newline at end of file\n-  \n+  // Use the layout defined at the page level, if available\r\n+  const getLayout = Component.getLayout || ((page) => page)\r\n+\r\n+  return (\r\n+    <AppWrapper>\r\n+      getLayout(<Component {...pageProps} />)\r\n+    </AppWrapper>\r\n+  )\r\n+}\r\n"
+                },
+                {
+                    "date": 1658218273635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,8 +10,8 @@\n   const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      getLayout(<Component {...pageProps} />)\r\n+      {getLayout(<Component {...pageProps} />)}\r\n     </AppWrapper>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1658223952201,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,9 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n // import '../components/register.module.css';\r\n+// import { MenuUnstyledContext } from '@mui/base'\r\n+import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n \r\n //run json-server first: json-server --watch data.json --port 4000\r\n \r\n"
+                },
+                {
+                    "date": 1658224724006,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n // import '../components/register.module.css';\r\n // import { MenuUnstyledContext } from '@mui/base'\r\n import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n+import Layout from '../layout/layout'\r\n \r\n //run json-server first: json-server --watch data.json --port 4000\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n@@ -12,8 +13,10 @@\n   const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      {getLayout(<Component {...pageProps} />)}\r\n+      <Layout>\r\n+        <Component {...pageProps} />\r\n+      </Layout>\r\n     </AppWrapper>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1659499388450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n // import './user/register/styles.css'\r\n // import Layout from '../components/layout.tsx'\r\n-// import '../components/register.module.css';\r\n+// import '../components/register.module.css'\r\n // import { MenuUnstyledContext } from '@mui/base'\r\n import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n"
+                },
+                {
+                    "date": 1659499478084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,10 +5,8 @@\n import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n \r\n-//run json-server first: json-server --watch data.json --port 4000\r\n-\r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   const getLayout = Component.getLayout || ((page) => page)\r\n \r\n"
+                },
+                {
+                    "date": 1659499486300,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,4 @@\n-// import './user/register/styles.css'\r\n-// import Layout from '../components/layout.tsx'\r\n-// import '../components/register.module.css'\r\n-// import { MenuUnstyledContext } from '@mui/base'\r\n import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n \r\n"
+                },
+                {
+                    "date": 1659507387005,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import Layout from '../layout/layout'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n-  const getLayout = Component.getLayout || ((page) => page)\r\n+  // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n       <Layout>\r\n"
+                },
+                {
+                    "date": 1659518015523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,20 @@\n+import { ThemeProvider } from '@mui/material'\r\n import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n+import appTheme from '../components/theme'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <Layout>\r\n-        <Component {...pageProps} />\r\n-      </Layout>\r\n+      <ThemeProvider theme={myTheme}>\r\n+        <Layout>\r\n+          <Component {...pageProps} />\r\n+        </Layout>\r\n+      </ThemeProvider>\r\n     </AppWrapper>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1659518062606,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <ThemeProvider theme={myTheme}>\r\n+      <ThemeProvider theme={appTheme}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </ThemeProvider>\r\n"
+                },
+                {
+                    "date": 1659518445047,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,20 +1,15 @@\n-import { ThemeProvider } from '@mui/material'\r\n-import Rect from 'react'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n-import appTheme from '../components/theme'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <ThemeProvider theme={appTheme}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n-      </ThemeProvider>\r\n     </AppWrapper>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1660704509026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import { SnackbarProvider } from 'notistack'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n@@ -6,10 +7,12 @@\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n+      <SnackbarProvider maxSnack={4}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n+      </SnackbarProvider>\r\n     </AppWrapper>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1660704514234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <SnackbarProvider maxSnack={4}>\r\n+      <SnackbarProvider maxSnack={3}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </SnackbarProvider>\r\n"
+                },
+                {
+                    "date": 1660704865902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,15 @@\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <SnackbarProvider maxSnack={3}>\r\n+      <SnackbarProvider \r\n+        maxSnack={3}\r\n+        autoHideDuration={3000}\r\n+        anchorOrigin={{\r\n+          vertical: 'bottom',\r\n+          horizontal: 'right',\r\n+        }}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </SnackbarProvider>\r\n"
+                },
+                {
+                    "date": 1660707697242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n+import { useTheme } from '@mui/material'\r\n import { SnackbarProvider } from 'notistack'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   // const getLayout = Component.getLayout || ((page) => page)\r\n+  const myTheme = useTheme()\r\n \r\n   return (\r\n     <AppWrapper>\r\n       <SnackbarProvider \r\n@@ -13,9 +15,13 @@\n         autoHideDuration={3000}\r\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n           horizontal: 'right',\r\n-        }}>\r\n+        }}\r\n+        sx={{\r\n+          '& .SnackbarItem-variantSuccess': {\r\n+            backgroundColor: myTheme.palette.primary.main, //your custom color here\r\n+          },}}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </SnackbarProvider>\r\n"
+                },
+                {
+                    "date": 1660707924942,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,11 @@\n-import { useTheme } from '@mui/material'\r\n import { SnackbarProvider } from 'notistack'\r\n import { AppWrapper } from '../context/AppContext'\r\n import Layout from '../layout/layout'\r\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   // const getLayout = Component.getLayout || ((page) => page)\r\n-  const myTheme = useTheme()\r\n \r\n   return (\r\n     <AppWrapper>\r\n       <SnackbarProvider \r\n@@ -16,12 +14,9 @@\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n           horizontal: 'right',\r\n         }}\r\n-        sx={{\r\n-          '& .SnackbarItem-variantSuccess': {\r\n-            backgroundColor: myTheme.palette.primary.main, //your custom color here\r\n-          },}}>\r\n+        >\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </SnackbarProvider>\r\n"
+                },
+                {
+                    "date": 1660717224594,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,10 +13,9 @@\n         autoHideDuration={3000}\r\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n           horizontal: 'right',\r\n-        }}\r\n-        >\r\n+        }}>\r\n         <Layout>\r\n           <Component {...pageProps} />\r\n         </Layout>\r\n       </SnackbarProvider>\r\n"
+                },
+                {
+                    "date": 1660732189648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,10 @@\n   // const getLayout = Component.getLayout || ((page) => page)\r\n \r\n   return (\r\n     <AppWrapper>\r\n-      <SnackbarProvider \r\n+      <SnackbarProvider\r\n+        hideIconVariant\r\n         maxSnack={3}\r\n         autoHideDuration={3000}\r\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n"
+                },
+                {
+                    "date": 1660786659950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     <AppWrapper>\r\n       <SnackbarProvider\r\n         hideIconVariant\r\n         maxSnack={3}\r\n-        autoHideDuration={3000}\r\n+        autoHideDuration={5000}\r\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n           horizontal: 'right',\r\n         }}>\r\n"
+                },
+                {
+                    "date": 1660788170105,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     <AppWrapper>\r\n       <SnackbarProvider\r\n         hideIconVariant\r\n         maxSnack={3}\r\n-        autoHideDuration={5000}\r\n+        autoHideDuration={7000}\r\n         anchorOrigin={{\r\n           vertical: 'bottom',\r\n           horizontal: 'right',\r\n         }}>\r\n"
+                },
+                {
+                    "date": 1660793094004,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,5 +21,5 @@\n         </Layout>\r\n       </SnackbarProvider>\r\n     </AppWrapper>\r\n   )\r\n-}\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1660793187735,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,5 +21,6 @@\n         </Layout>\r\n       </SnackbarProvider>\r\n     </AppWrapper>\r\n   )\r\n-}\n\\ No newline at end of file\n+}\r\n+\r\n"
+                },
+                {
+                    "date": 1660793283337,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,5 +22,4 @@\n       </SnackbarProvider>\r\n     </AppWrapper>\r\n   )\r\n }\r\n-\r\n"
+                },
+                {
+                    "date": 1660793292483,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n export default function MyApp({ Component, pageProps }) {\r\n   // Use the layout defined at the page level, if available\r\n   // const getLayout = Component.getLayout || ((page) => page)\r\n-\r\n+sc\r\n   return (\r\n     <AppWrapper>\r\n       <SnackbarProvider\r\n         hideIconVariant\r\n"
+                }
+            ],
+            "date": 1657791854870,
+            "name": "Commit-0",
+            "content": "// import './user/register/styles.css'\r\n// import Layout from '../components/layout.tsx'\r\nimport '../components/register.module.css';\r\n\r\nexport default function MyApp({ Component, pageProps }) {\r\n    // Use the layout defined at the page level, if available\r\n    const getLayout = Component.getLayout || ((page) => page)\r\n  \r\n    return getLayout(<Component {...pageProps} />)\r\n  }\r\n  "
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "sourceFile": "data/user.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1657874252025,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657874281008,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,26 +1,26 @@\n [\r\n     {\r\n-      \"id\": 1,\r\n-      \"firstName\": \"fName_1\",\r\n-      \"lastName\": \"lName_1\",\r\n-      \"age\": 45\r\n+        \"id\": 1,\r\n+        \"firstName\": \"fName_1\",\r\n+        \"lastName\": \"lName_1\",\r\n+        \"age\": 45\r\n     },\r\n     {\r\n-      \"id\": 2,\r\n-      \"firstName\": \"fName_2\",\r\n-      \"lastName\": \"lName_2\",\r\n-      \"age\": 23\r\n+        \"id\": 2,\r\n+        \"firstName\": \"fName_2\",\r\n+        \"lastName\": \"lName_2\",\r\n+        \"age\": 23\r\n     },\r\n     {\r\n-      \"id\": 3,\r\n-      \"firstName\": \"fName_3\",\r\n-      \"lastName\": \"lName_3\",\r\n-      \"age\": 38\r\n\\ No newline at end of file\n+        \"id\": 3,\r\n+        \"firstName\": \"fName_3\",\r\n+        \"lastName\": \"lName_3\",\r\n+        \"age\": 38\r\n     },\r\n     {\r\n-      \"id\": 4,\r\n-      \"fName\": \"fName_4\",\r\n-      \"lName\": \"lName_4\",\r\n-      \"age\": 40\r\n+        \"id\": 4,\r\n+        \"fName\": \"fName_4\",\r\n+        \"lName\": \"lName_4\",\r\n+        \"age\": 40\r\n     }\r\n-  ]\n+]\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1657874252025,
+            "name": "Commit-0",
+            "content": "[\r\n    {\r\n      \"id\": 1,\r\n      \"firstName\": \"fName_1\",\r\n      \"lastName\": \"lName_1\",\r\n      \"age\": 45\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"firstName\": \"fName_2\",\r\n      \"lastName\": \"lName_2\",\r\n      \"age\": 23\r\n    },\r\n    {\r\n      \"id\": 3,\r\n      \"firstName\": \"fName_3\",\r\n      \"lastName\": \"lName_3\",\r\n      \"age\": 38\r\n    },\r\n    {\r\n      \"id\": 4,\r\n      \"fName\": \"fName_4\",\r\n      \"lName\": \"lName_4\",\r\n      \"age\": 40\r\n    }\r\n  ]"
+        }
+    ]
+}

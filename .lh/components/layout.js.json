@@ -1,0 +1,18 @@
+{
+    "sourceFile": "components/layout.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1657783130253,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1657783130253,
+            "name": "Commit-0",
+            "content": "import * as React from 'react';\r\nimport AppBar from '@mui/material/AppBar';\r\nimport Box from '@mui/material/Box';\r\nimport Toolbar from '@mui/material/Toolbar';\r\nimport Typography from '@mui/material/Typography';\r\nimport Button from '@mui/material/Button';\r\nimport IconButton from '@mui/material/IconButton';\r\nimport MenuIcon from '@mui/icons-material/Menu';\r\n\r\nexport default function ButtonAppBar() {\r\n  return (\r\n    <Box sx={{ flexGrow: 1 }}>\r\n      <AppBar position=\"static\">\r\n        <Toolbar>\r\n          <IconButton\r\n            size=\"large\"\r\n            edge=\"start\"\r\n            color=\"inherit\"\r\n            aria-label=\"menu\"\r\n            sx={{ mr: 2 }}\r\n          >\r\n            <MenuIcon />\r\n          </IconButton>\r\n          <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n            News\r\n          </Typography>\r\n          <Button color=\"inherit\">Login</Button>\r\n        </Toolbar>\r\n      </AppBar>\r\n    </Box>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

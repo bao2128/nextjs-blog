@@ -1,0 +1,34 @@
+{
+    "sourceFile": "pages/AppContext.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1658216110224,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1658217544678,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,24 @@\n-// AppContext\r\n+import * as React from 'react';\r\n+import { userList } from '../components/interface'\r\n \r\n-import React from \"react\";\r\n+const AppContext = React.createContext([]);\r\n \r\n\\ No newline at end of file\n-const AppContext = React.createContext();\r\n+export function AppWrapper({ children }) {\r\n+  let sharedState = () => {\r\n+    async function fetchUsers() {\r\n+        const res = await fetch('/api/User')\r\n+        const result: userList[] = await res.json()\r\n+        // console.log(\"data\", result);\r\n+    }\r\n+  }\r\n \r\n-export default AppContext;\n+  return (\r\n+    <AppContext.Provider value={sharedState}>\r\n+      {children}\r\n+    </AppContext.Provider>\r\n+  );\r\n+}\r\n+\r\n+export function useAppContext() {\r\n+  return useContext(AppContext);\r\n+}\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658217573349,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n     async function fetchUsers() {\r\n         const res = await fetch('/api/User')\r\n         const result: userList[] = await res.json()\r\n         // console.log(\"data\", result);\r\n+        return result\r\n     }\r\n   }\r\n \r\n   return (\r\n"
+                },
+                {
+                    "date": 1658218079698,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,25 +1,31 @@\n import * as React from 'react';\r\n import { userList } from '../components/interface'\r\n+import { useState } from 'react';\r\n \r\n const AppContext = React.createContext([]);\r\n \r\n export function AppWrapper({ children }) {\r\n-  let sharedState = () => {\r\n-    async function fetchUsers() {\r\n-        const res = await fetch('/api/User')\r\n-        const result: userList[] = await res.json()\r\n-        // console.log(\"data\", result);\r\n-        return result\r\n-    }\r\n-  }\r\n+    const [users, setUsers] = useState([])\r\n \r\n-  return (\r\n-    <AppContext.Provider value={sharedState}>\r\n-      {children}\r\n-    </AppContext.Provider>\r\n-  );\r\n+    React.useEffect(() => {\r\n+        async function fetchData() {\r\n+            const res = await fetch('/api/User')\r\n+            const result: userList[] = await res.json()\r\n+            //   console.log(\"data\", result);\r\n+            setUsers(result)\r\n+        }\r\n+        fetchData()\r\n+    }, [])\r\n+\r\n+    let sharedState:userList[] = users\r\n+\r\n+    return (\r\n+        <AppContext.Provider value={sharedState}>\r\n+            {children}\r\n+        </AppContext.Provider>\r\n+    );\r\n }\r\n \r\n export function useAppContext() {\r\n-  return useContext(AppContext);\r\n+    return React.useContext(AppContext);\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1658218105350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n     React.useEffect(() => {\r\n         async function fetchData() {\r\n             const res = await fetch('/api/User')\r\n             const result: userList[] = await res.json()\r\n-            //   console.log(\"data\", result);\r\n+              console.log(\"data\", result);\r\n             setUsers(result)\r\n         }\r\n         fetchData()\r\n     }, [])\r\n"
+                }
+            ],
+            "date": 1658216110224,
+            "name": "Commit-0",
+            "content": "// AppContext\r\n\r\nimport React from \"react\";\r\n\r\nconst AppContext = React.createContext();\r\n\r\nexport default AppContext;"
+        }
+    ]
+}

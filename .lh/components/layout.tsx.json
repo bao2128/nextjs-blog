@@ -1,0 +1,58 @@
+{
+    "sourceFile": "components/layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 10,
+            "patches": [
+                {
+                    "date": 1657783263741,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657784794755,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n-export default function ButtonAppBar() {\r\n+export default function layout() {\r\n   return (\r\n     <Box sx={{ flexGrow: 1 }}>\r\n       <AppBar position=\"static\">\r\n         <Toolbar>\r\n"
+                },
+                {
+                    "date": 1657784902569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n-export default function layout() {\r\n+export default function layout({children}) {\r\n   return (\r\n     <Box sx={{ flexGrow: 1 }}>\r\n       <AppBar position=\"static\">\r\n         <Toolbar>\r\n@@ -27,6 +27,9 @@\n           <Button color=\"inherit\">Login</Button>\r\n         </Toolbar>\r\n       </AppBar>\r\n     </Box>\r\n+    <main>\r\n+      {children}\r\n+    </main>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1657784940173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,28 +8,30 @@\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n export default function layout({children}) {\r\n   return (\r\n-    <Box sx={{ flexGrow: 1 }}>\r\n-      <AppBar position=\"static\">\r\n-        <Toolbar>\r\n-          <IconButton\r\n-            size=\"large\"\r\n-            edge=\"start\"\r\n-            color=\"inherit\"\r\n-            aria-label=\"menu\"\r\n-            sx={{ mr: 2 }}\r\n-          >\r\n-            <MenuIcon />\r\n-          </IconButton>\r\n-          <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n-            News\r\n-          </Typography>\r\n-          <Button color=\"inherit\">Login</Button>\r\n-        </Toolbar>\r\n-      </AppBar>\r\n-    </Box>\r\n-    <main>\r\n-      {children}\r\n-    </main>\r\n+    <>\r\n+      <Box sx={{ flexGrow: 1 }}>\r\n+        <AppBar position=\"static\">\r\n+          <Toolbar>\r\n+            <IconButton\r\n+              size=\"large\"\r\n+              edge=\"start\"\r\n+              color=\"inherit\"\r\n+              aria-label=\"menu\"\r\n+              sx={{ mr: 2 }}\r\n+            >\r\n+              <MenuIcon />\r\n+            </IconButton>\r\n+            <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n+              News\r\n+            </Typography>\r\n+            <Button color=\"inherit\">Login</Button>\r\n+          </Toolbar>\r\n+        </AppBar>\r\n+      </Box>\r\n+      <main>\r\n+          {children}\r\n+      </main>\r\n+    </>\r\n   );\r\n }\r\n"
+                },
+                {
+                    "date": 1657785433158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n             </IconButton>\r\n             <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n               News\r\n             </Typography>\r\n-            <Button color=\"inherit\">Login</Button>\r\n+            <Button color=\"inherit\">Register</Button>\r\n           </Toolbar>\r\n         </AppBar>\r\n       </Box>\r\n       <main>\r\n"
+                },
+                {
+                    "date": 1657785446830,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n             >\r\n               <MenuIcon />\r\n             </IconButton>\r\n             <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n-              News\r\n+              {page}\r\n             </Typography>\r\n             <Button color=\"inherit\">Register</Button>\r\n           </Toolbar>\r\n         </AppBar>\r\n"
+                },
+                {
+                    "date": 1657785665552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n             >\r\n               <MenuIcon />\r\n             </IconButton>\r\n             <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n-              {page}\r\n+              Page\r\n             </Typography>\r\n             <Button color=\"inherit\">Register</Button>\r\n           </Toolbar>\r\n         </AppBar>\r\n"
+                },
+                {
+                    "date": 1657787156721,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,10 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n+import './register.module.css'\r\n+\r\n export default function layout({children}) {\r\n   return (\r\n     <>\r\n       <Box sx={{ flexGrow: 1 }}>\r\n"
+                },
+                {
+                    "date": 1657787277227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n-import './register.module.css'\r\n \r\n+\r\n export default function layout({children}) {\r\n   return (\r\n     <>\r\n       <Box sx={{ flexGrow: 1 }}>\r\n"
+                },
+                {
+                    "date": 1657787448781,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,10 +6,10 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n+import './register.module.css'\r\n \r\n-\r\n export default function layout({children}) {\r\n   return (\r\n     <>\r\n       <Box sx={{ flexGrow: 1 }}>\r\n"
+                },
+                {
+                    "date": 1657787516043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import Button from '@mui/material/Button';\r\n import IconButton from '@mui/material/IconButton';\r\n import MenuIcon from '@mui/icons-material/Menu';\r\n \r\n-import './register.module.css'\r\n+// import './register.module.css'\r\n \r\n export default function layout({children}) {\r\n   return (\r\n     <>\r\n"
+                }
+            ],
+            "date": 1657783263741,
+            "name": "Commit-0",
+            "content": "import * as React from 'react';\r\nimport AppBar from '@mui/material/AppBar';\r\nimport Box from '@mui/material/Box';\r\nimport Toolbar from '@mui/material/Toolbar';\r\nimport Typography from '@mui/material/Typography';\r\nimport Button from '@mui/material/Button';\r\nimport IconButton from '@mui/material/IconButton';\r\nimport MenuIcon from '@mui/icons-material/Menu';\r\n\r\nexport default function ButtonAppBar() {\r\n  return (\r\n    <Box sx={{ flexGrow: 1 }}>\r\n      <AppBar position=\"static\">\r\n        <Toolbar>\r\n          <IconButton\r\n            size=\"large\"\r\n            edge=\"start\"\r\n            color=\"inherit\"\r\n            aria-label=\"menu\"\r\n            sx={{ mr: 2 }}\r\n          >\r\n            <MenuIcon />\r\n          </IconButton>\r\n          <Typography variant=\"h6\" component=\"div\" sx={{ flexGrow: 1 }}>\r\n            News\r\n          </Typography>\r\n          <Button color=\"inherit\">Login</Button>\r\n        </Toolbar>\r\n      </AppBar>\r\n    </Box>\r\n  );\r\n}\r\n"
+        }
+    ]
+}

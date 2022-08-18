@@ -1,0 +1,22 @@
+{
+    "sourceFile": "pages/login.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1657765639929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1657765653075,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import * as React from \"react\";\r\n import ReactDOM from \"react-dom\";\r\n import { useForm } from \"react-hook-form\";\r\n \r\n-import \"./styles.css\";\r\n+// import \"./styles.css\";\r\n \r\n interface IFormInput {\r\n   firstName: string;\r\n   lastName: string;\r\n"
+                }
+            ],
+            "date": 1657765639929,
+            "name": "Commit-0",
+            "content": "import * as React from \"react\";\r\nimport ReactDOM from \"react-dom\";\r\nimport { useForm } from \"react-hook-form\";\r\n\r\nimport \"./styles.css\";\r\n\r\ninterface IFormInput {\r\n  firstName: string;\r\n  lastName: string;\r\n  age: number;\r\n  example: string;\r\n}\r\n\r\nfunction App() {\r\n  const {\r\n    register,\r\n    handleSubmit,\r\n    watch,\r\n    formState: { errors }\r\n  } = useForm<IFormInput>();\r\n\r\n  const onSubmit = (data: IFormInput) => {\r\n    alert(JSON.stringify(data));\r\n  }; // your form submit function which will invoke after successful validation\r\n\r\n  console.log(watch(\"example\")); // you can watch individual input by pass the name of the input\r\n\r\n  return (\r\n    <form onSubmit={handleSubmit(onSubmit)}>\r\n      <label>First Name</label>\r\n      <input\r\n        {...register(\"firstName\", {\r\n          required: true,\r\n          maxLength: 20,\r\n          pattern: /^[A-Za-z]+$/i\r\n        })}\r\n      />\r\n      {errors?.firstName?.type === \"required\" && <p>This field is required</p>}\r\n      {errors?.firstName?.type === \"maxLength\" && (\r\n        <p>First name cannot exceed 20 characters</p>\r\n      )}\r\n      {errors?.firstName?.type === \"pattern\" && (\r\n        <p>Alphabetical characters only</p>\r\n      )}\r\n      <label>Laste Name</label>\r\n      <input {...register(\"lastName\", { pattern: /^[A-Za-z]+$/i })} />\r\n      {errors?.lastName?.type === \"pattern\" && (\r\n        <p>Alphabetical characters only</p>\r\n      )}\r\n      <label>Age</label>a\r\n      <input {...register(\"age\", { min: 18, max: 99 })} />\r\n      {errors.age && (\r\n        <p>You Must be older then 18 and younger then 99 years old</p>\r\n      )}\r\n      <input type=\"submit\" />\r\n    </form>\r\n  );\r\n}\r\n\r\nexport default App\r\n"
+        }
+    ]
+}
