@@ -33,6 +33,7 @@ import { useRouter } from 'next/router';
 import Typography from '@mui/material/Typography';
 import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import CheckIcon from '@mui/icons-material/Check';
+import PriorityHighOutlinedIcon from '@mui/icons-material/PriorityHighOutlined';
 // import CancelIcon from '@mui/icons-material/Cancel'
 import { useSnackbar } from 'notistack';
 
@@ -187,10 +188,10 @@ export default function userPage() {
         // enqueueSnackbar(`User ${selectedId[0]} has been deleted!`, { variant: 'info' })
         enqueueSnackbar(
             <>
-                <CheckIcon />
+                <PriorityHighOutlinedIcon />
                 <Typography>&nbsp;{`User ${selectedId[0]} has been deleted!`}</Typography>
             </>,
-            { variant: 'info' },
+            { variant: 'warning' },
         );
         handleCloseDialog();
     };
